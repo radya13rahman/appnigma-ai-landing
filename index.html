@@ -941,14 +941,20 @@
     section.relative.bg-white > div[style*="width:893px"] { display: none; }
     .w-\[591px\] { width: 100% !important; }
     div[style*="max-width:591px"].flex { flex-wrap: wrap !important; }
-    /* illustration: natural size anchored to bottom so both boxes show full-width */
+    /* illustration: zoomed, anchored to bottom, cropped to show both boxes centrally */
     section[style*="min-height:836px"] .pointer-events-none img {
-      height: auto !important;
+      height: 300px !important;
       top: auto !important;
+      object-fit: cover !important;
+      object-position: center !important;
     }
-    /* solid white covers content area; fades away to reveal the illustration below */
+    /* white covers content; fades in at top of illustration, fades out at bottom */
     section[style*="min-height:836px"] .pointer-events-none [style*="linear-gradient"] {
-      background: linear-gradient(180deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 84%) !important;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,1) 67%,
+        rgba(255,255,255,0) 76%,
+        rgba(255,255,255,0) 91%,
+        rgba(255,255,255,1) 100%) !important;
     }
 
     /* ---------- Social proof ---------- */
