@@ -1,0 +1,62 @@
+---
+---
+<section class="bg-white border-t border-b border-[#e5e5e5]">
+  <div class="flex">
+    <!-- Left hatch panel -->
+    <div class="hatch flex-1" style="min-width:120px;"></div>
+    <!-- Center content -->
+    <div class="social-proof-center border-l border-r border-[#e5e5e5]" style="width:1200px;max-width:calc(100% - 240px);">
+      <!-- Heading -->
+      <div class="social-proof-heading-wrap flex items-center justify-center border-b border-[#e5e5e5]" style="height:160px;">
+        <p class="font-heading font-medium text-[24px] text-[#0a0a0a] whitespace-nowrap" style="letter-spacing:-0.04em;">
+          Teams ship <strong class="font-bold">3x faster</strong> with Appnigma AI
+        </p>
+      </div>
+      <!-- Logo cells — each cycles independently with swipe-up -->
+      <div id="logoCells" class="flex border-b border-[#e5e5e5]">
+        <div class="logo-cell"></div>
+        <div class="logo-cell"></div>
+        <div class="logo-cell"></div>
+        <div class="logo-cell"></div>
+        <div class="logo-cell"></div>
+      </div>
+      <div style="height:160px;"></div>
+    </div>
+    <!-- Right hatch panel -->
+    <div class="hatch flex-1" style="min-width:120px;"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var logos = [
+    '/assets/46f47ea6c18798b9e9e0e99c1ece6931a1151123.svg',
+    '/assets/563b12dafdefe80c2bee0277124c24206230a6d9.svg',
+    '/assets/8b04729df1306f229d762d1603659070008a3730.svg',
+    '/assets/c52285970f7f1ca9daeeb6f2c2f4c87c51529303.svg',
+    '/assets/1d3f028314f5e7aead2d462d5b1eca9f51a542c8.svg'
+  ];
+  var cells = document.querySelectorAll('#logoCells .logo-cell');
+  cells.forEach(function (cell, i) {
+    logos.forEach(function (src) {
+      var img = document.createElement('img');
+      img.src = src;
+      img.alt = '';
+      cell.appendChild(img);
+    });
+    var imgs = cell.querySelectorAll('img');
+    var current = i % logos.length;
+    imgs[current].classList.add('is-active');
+    var duration = 2600 + i * 650;
+    setInterval(function () {
+      var prev = imgs[current];
+      current = (current + 1) % logos.length;
+      var next = imgs[current];
+      prev.classList.remove('is-active');
+      prev.classList.add('is-exit');
+      next.classList.add('is-active');
+      setTimeout(function () { prev.classList.remove('is-exit'); }, 600);
+    }, duration);
+  });
+})();
+</script>
