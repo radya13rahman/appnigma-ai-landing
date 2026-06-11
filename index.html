@@ -282,7 +282,7 @@
   HOW IT WORKS
 ================================================ -->
 <section class="bg-white px-[120px]" style="padding-left:120px;padding-right:120px;">
-  <div class="border-l border-r border-[#e5e5e5] flex items-start overflow-hidden py-20">
+  <div class="border-l border-r border-[#e5e5e5] flex items-stretch overflow-hidden py-20">
     <!-- Left text column -->
     <div class="flex flex-col border-t border-b border-[#e5e5e5] flex-shrink-0" style="width:600px;">
       <!-- Header info -->
@@ -312,8 +312,8 @@
       </button>
     </div>
     <!-- Right visual -->
-    <div class="bg-[#fafafa] border border-[#e5e5e5] overflow-hidden flex-shrink-0" style="width:600px;height:580px;">
-      <div class="flex items-center justify-center h-full">
+    <div class="bg-[#fafafa] border border-[#e5e5e5] overflow-hidden flex-shrink-0 flex items-center justify-center" style="width:600px;">
+      <div>
         <!-- Browser mockup -->
         <div class="bg-white rounded-[9px] overflow-hidden shadow-[0px_0px_0px_0.775px_rgba(0,0,0,0.08),0px_1.55px_1.55px_rgba(0,0,0,0.04),0px_6.2px_12.4px_-3.1px_rgba(0,0,0,0.04)]" style="width:400px;height:388px;">
           <!-- Browser chrome -->
@@ -935,12 +935,21 @@
 
     /* ---------- Hero ---------- */
     section[style*="min-height:836px"] { min-height: auto !important; }
-    div[style*="padding-top:153px"] { padding-top: 56px !important; padding-bottom: 300px !important; min-height: auto !important; }
+    div[style*="padding-top:153px"] { padding-top: 56px !important; padding-bottom: 320px !important; min-height: auto !important; }
     h1[style*="font-size:64px"] { font-size: 40px !important; letter-spacing: -0.8px !important; }
     /* hide the wide left white gradient so the hero art shows below the copy */
     section.relative.bg-white > div[style*="width:893px"] { display: none; }
     .w-\[591px\] { width: 100% !important; }
     div[style*="max-width:591px"].flex { flex-wrap: wrap !important; }
+    /* illustration: natural size anchored to bottom so both boxes show full-width */
+    section[style*="min-height:836px"] .pointer-events-none img {
+      height: auto !important;
+      top: auto !important;
+    }
+    /* solid white covers content area; fades away to reveal the illustration below */
+    section[style*="min-height:836px"] .pointer-events-none [style*="linear-gradient"] {
+      background: linear-gradient(180deg, rgba(255,255,255,1) 68%, rgba(255,255,255,0) 84%) !important;
+    }
 
     /* ---------- Social proof ---------- */
     .hatch { min-width: 20px !important; flex: 0 0 20px !important; }
@@ -961,10 +970,10 @@
     .p-10 { padding: 24px !important; }
 
     /* ---------- How it works ---------- */
-    .border-l.border-r.border-\[\#e5e5e5\].flex.items-start { flex-direction: column; }
+    .border-l.border-r.border-\[\#e5e5e5\].flex.items-stretch { flex-direction: column; }
     div[style*="width:600px"] { width: 100% !important; }
-    div[style*="height:580px"] { height: 420px !important; }
-    div[style*="width:400px"][style*="height:388px"] { width: 86% !important; height: 340px !important; }
+    .bg-\[\#fafafa\].border.border-\[\#e5e5e5\].overflow-hidden.flex-shrink-0 { height: 360px !important; align-self: auto !important; }
+    div[style*="width:400px"][style*="height:388px"] { width: 86% !important; height: 300px !important; }
 
     /* ---------- Trust (dark) ---------- */
     section.bg-\[\#151515\] .border.border-\[\#3d3d3d\] > .flex { flex-direction: column; }
