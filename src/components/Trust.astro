@@ -15,7 +15,7 @@
       <div class="h-[260px] border-b border-[#3d3d3d] overflow-hidden relative">
         <div class="absolute bg-[#1c1c1c] inset-0"></div>
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px]">
-          <img src="/assets/8471d15541b9d1307cac06e2d56e95894261e13d.png" alt="" class="w-full h-full object-contain" loading="lazy" />
+          <img src="/assets/8471d15541b9d1307cac06e2d56e95894261e13d.png" alt="" class="trust-metal w-full h-full object-contain" loading="lazy" />
         </div>
       </div>
       <!-- Feature cards row -->
@@ -60,3 +60,33 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* Emblem starts larger and shrinks to its resting size when scrolled into view */
+  .trust-metal {
+    transform: scale(1.6);
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .trust-metal.is-in { transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .trust-metal { transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var el = document.querySelector('.trust-metal');
+    if (!el) return;
+    if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(el);
+  })();
+</script>
