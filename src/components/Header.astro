@@ -573,6 +573,9 @@
     .hdr-cta { display: none; }
     .hdr-hamburger { display: flex; }
     .hdr-mega { display: none !important; }
+    /* Allow drop item text to wrap instead of overflowing/clipping the edge */
+    .hdr-mobile-drop-item .hdr-drop-text { min-width: 0; }
+    .hdr-mobile-drop-item .hdr-drop-desc { white-space: normal; overflow-wrap: anywhere; }
   }
   @media (min-width: 769px) {
     .hdr-mobile-overlay { display: none !important; }
