@@ -156,8 +156,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   section.bg-\[\#151515\] .border.border-\[\#3d3d3d\] > .flex { flex-direction: column; }
   section.bg-\[\#151515\] .flex-1.border-r { border-right: none !important; border-bottom: 1px solid #3d3d3d; }
   .h-\[220px\] { height: auto !important; }
-  section.bg-\[\#151515\] h3 { text-align: center; }
-  section.bg-\[\#151515\] .bg-\[\#262626\] p { text-align: center; }
+  section.bg-\[\#151515\] h3 { text-align: left; }
+  section.bg-\[\#151515\] .bg-\[\#262626\] p { text-align: left; }
 
   /* ---------- Compare ---------- */
   .compare-table-wrap { overflow-x: auto; }
