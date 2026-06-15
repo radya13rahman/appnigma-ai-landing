@@ -138,6 +138,14 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .px-12 { padding-left: 24px !important; padding-right: 24px !important; }
   .p-10 { padding: 24px !important; }
 
+  /* ---------- Bigger, thumb-friendly buttons ---------- */
+  .btn-primary, .btn-secondary {
+    height: 44px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    font-size: 15px !important;
+  }
+
   /* ---------- How it works ---------- */
   .how-it-works-row { flex-direction: column; }
   .how-it-works-col { width: 100% !important; }
