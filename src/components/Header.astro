@@ -1,134 +1,663 @@
 ---
 ---
-<header class="bg-white sticky top-0 z-50 border-b border-[#e5e5e5]" id="site-header">
-  <div class="max-w-[1440px] mx-auto h-16 flex items-center justify-between" style="padding-left:120px;padding-right:120px;">
-    <!-- Logo + Nav -->
-    <div class="flex items-center gap-8">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="w-6 h-6 rounded-[4.5px] object-contain" />
-        <span class="font-heading font-medium text-[16px] text-[#0a0a0a] tracking-tight whitespace-nowrap">Appnigma AI</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-8 relative">
-        <!-- Platform dropdown trigger -->
-        <div class="relative" id="platform-menu">
-          <button
-            id="platform-btn"
-            class="flex items-center gap-1 font-body font-medium text-[14px] text-[#525252] hover:text-[#0a0a0a] transition-colors whitespace-nowrap"
-            aria-expanded="false"
-            aria-haspopup="true"
-          >
+<div class="hdr-sticky">
+  <header class="hdr-bar">
+    <div class="hdr-inner">
+      <div class="hdr-left">
+        <a href="/" class="hdr-brand">
+          <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="hdr-logo" />
+          <span class="hdr-brand-name">Appnigma AI</span>
+        </a>
+        <nav class="hdr-desktop-nav" id="desktopNav">
+          <button class="hdr-nav-btn" id="dPlatformBtn" aria-haspopup="true" aria-expanded="false" aria-controls="megaPlatform">
             Platform
-            <svg id="platform-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" class="transition-transform duration-200">
-              <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="#525252" stroke-width="1.17" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-chevron" id="dPlatformChevron" alt="" />
           </button>
-        </div>
-        <a href="#" class="font-body font-medium text-[14px] text-[#525252] hover:text-[#0a0a0a] transition-colors whitespace-nowrap">Pricing</a>
-        <a href="#" class="font-body font-medium text-[14px] text-[#525252] hover:text-[#0a0a0a] transition-colors whitespace-nowrap">Customers</a>
-        <div class="relative">
-          <button class="flex items-center gap-1 font-body font-medium text-[14px] text-[#525252] hover:text-[#0a0a0a] transition-colors whitespace-nowrap">
+          <a href="#" class="hdr-nav-link">Pricing</a>
+          <a href="#" class="hdr-nav-link">Customers</a>
+          <button class="hdr-nav-btn" id="dResourcesBtn" aria-haspopup="true" aria-expanded="false" aria-controls="megaResources">
             Resources
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="#525252" stroke-width="1.17" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-chevron" id="dResourcesChevron" alt="" />
           </button>
-        </div>
-      </nav>
-    </div>
-    <!-- CTA Buttons -->
-    <div class="flex items-center gap-3">
-      <button class="font-body font-medium text-[14px] text-[#202b30] px-2 py-2 rounded-[8px] hover:bg-gray-50 transition-colors whitespace-nowrap" style="letter-spacing:-0.14px">Sign In</button>
-      <button class="btn-primary font-body font-medium text-[14px] text-white px-3 h-8 rounded-[8px] whitespace-nowrap" style="letter-spacing:-0.14px">Book a demo</button>
-      <button class="mobile-menu-btn" aria-label="Menu" style="display:none;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+        </nav>
+      </div>
+      <div class="hdr-cta">
+        <button class="hdr-btn-ghost">Sign In</button>
+        <button class="hdr-btn-primary">Book a demo</button>
+      </div>
+      <button class="hdr-hamburger" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay">
+        <img src="/assets/5133102a7b8e9471deb07b0797ea635456bd33c5.svg" alt="" class="w-6 h-6" />
       </button>
     </div>
-  </div>
+  </header>
 
-  <!-- Platform dropdown panel -->
-  <div
-    id="platform-dropdown"
-    class="hidden absolute left-0 right-0 bg-white border-b border-[#e5e5e5] z-40"
-    style="top:64px;"
-  >
-    <div class="max-w-[1440px] mx-auto" style="padding-left:120px;padding-right:120px;">
-      <div class="border-l border-r border-[#e5e5e5] px-6 py-6 flex flex-col gap-4">
-        <!-- Salesforce -->
-        <a href="/salesforce" class="flex items-center gap-4 py-3 hover:bg-[#fafafa] rounded transition-colors group">
-          <div class="flex-shrink-0 w-16 h-16 bg-[#fafafa] border border-[#e5e5e5] flex items-center justify-center overflow-hidden">
-            <img src="/assets/8a78f5b5a07ab3a18319e0a602ccf041fe32c461.svg" alt="Salesforce" class="w-10 h-10 object-contain" />
+  <!-- Platform mega panel -->
+  <div class="hdr-mega" id="megaPlatform" role="menu" hidden>
+    <div class="hdr-mega-inner">
+      <div class="hdr-mega-items">
+        <a href="/salesforce.html" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb">
+            <div class="hdr-drop-thumb-inner">
+              <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
+            </div>
           </div>
-          <div class="flex flex-col">
-            <span class="font-body font-semibold text-[16px] text-[#525252] leading-[1.1]">Salesforces</span>
-            <span class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Native managed packages</span>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">Salesforces</span>
+            <span class="hdr-drop-desc">Native managed packages</span>
           </div>
         </a>
-        <!-- HubSpot -->
-        <a href="#" class="flex items-center gap-4 py-3 hover:bg-[#fafafa] rounded transition-colors group">
-          <div class="flex-shrink-0 w-16 h-16 bg-[#fafafa] border border-[#e5e5e5] flex items-center justify-center overflow-hidden">
-            <img src="/assets/hubspot-icon.png" alt="HubSpot" class="w-10 h-10 object-contain" />
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb">
+            <div class="hdr-drop-thumb-inner">
+              <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--hs" alt="HubSpot" />
+            </div>
           </div>
-          <div class="flex flex-col">
-            <span class="font-body font-semibold text-[16px] text-[#525252] leading-[1.1]">HubSpot</span>
-            <span class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Marketplace-ready apps</span>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">HubSpot</span>
+            <span class="hdr-drop-desc">Marketplace-ready apps</span>
           </div>
         </a>
-        <!-- Don't see your CRM? -->
-        <a href="#" class="flex items-center gap-4 py-3 hover:bg-[#fafafa] rounded transition-colors group">
-          <div class="flex-shrink-0 w-16 h-16 bg-[#fafafa] border border-[#e5e5e5] flex items-center justify-center">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="1.5">
-              <rect x="3" y="4" width="18" height="16" rx="2"/>
-              <path d="M8 2v4M16 2v4M3 10h18"/>
-              <path d="M9 16l1.5 1.5L15 13" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+            <img src="/assets/0e0d44c167edf39922c0df631d9e5e99f62034fb.svg" alt="" class="w-6 h-6" />
           </div>
-          <div class="flex flex-col">
-            <span class="font-body font-semibold text-[16px] text-[#525252] leading-[1.1]">Don't see your CRM?</span>
-            <span class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Contact Us</span>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">Don't see your CRM?</span>
+            <span class="hdr-drop-desc">Contact Us</span>
           </div>
         </a>
       </div>
     </div>
   </div>
-</header>
+
+  <!-- Resources mega panel -->
+  <div class="hdr-mega" id="megaResources" role="menu" hidden>
+    <div class="hdr-mega-inner">
+      <div class="hdr-mega-items">
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+            <img src="/assets/0036024b74764adca8a06541ed1296f1bf427236.svg" alt="" class="w-6 h-6" />
+          </div>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">Blogs</span>
+            <span class="hdr-drop-desc">Tips, trends, and product stories.</span>
+          </div>
+        </a>
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+            <img src="/assets/13beb2543b48ad10029ad2ab0ba6ef1daeda3282.svg" alt="" class="w-6 h-6" />
+          </div>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">About Us</span>
+            <span class="hdr-drop-desc">The team behind Appnigma.</span>
+          </div>
+        </a>
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+            <img src="/assets/45a875d6af3533a1b3baa9fd629d43e315c3045d.svg" alt="" class="w-6 h-6" />
+          </div>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">Changelog</span>
+            <span class="hdr-drop-desc">What's new and what changed.</span>
+          </div>
+        </a>
+        <a href="#" class="hdr-mega-item" role="menuitem">
+          <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+            <img src="/assets/701d187827927684f2bba5dfb52e6f3a384f9ed3.svg" alt="" class="w-6 h-6" />
+          </div>
+          <div class="hdr-drop-text">
+            <span class="hdr-drop-title">Docs</span>
+            <span class="hdr-drop-desc">Guides, references, and how-tos.</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile overlay -->
+<div id="mobileOverlay" class="hdr-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation" hidden>
+  <div class="hdr-mobile-top">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="w-6 h-6 rounded-[4.5px] object-contain" />
+      <span class="font-heading font-medium text-[16px] text-[#0a0a0a] tracking-tight">Appnigma AI</span>
+    </a>
+    <button class="hdr-mobile-close" id="mobileCloseBtn" aria-label="Close menu">
+      <img src="/assets/99d2b8d71eac2419326778e36aecfe56160269ba.svg" alt="" class="w-6 h-6" />
+    </button>
+  </div>
+  <div class="hdr-mobile-body">
+    <div class="hdr-mobile-accord" id="mPlatform">
+      <button class="hdr-mobile-accord-btn" id="mPlatformBtn" aria-expanded="false">
+        <span class="hdr-mobile-link-text">Platform</span>
+        <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-mobile-chevron" alt="" />
+      </button>
+      <div class="hdr-mobile-accord-body" id="mPlatformBody" hidden>
+        <div class="hdr-mobile-drop">
+          <a href="/salesforce.html" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb">
+              <div class="hdr-drop-thumb-inner" style="width:64px;height:64px;">
+                <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
+              </div>
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Salesforces</span>
+              <span class="hdr-drop-desc">Native managed packages</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb">
+              <div class="hdr-drop-thumb-inner" style="width:64px;height:64px;">
+                <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--hs" alt="HubSpot" />
+              </div>
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">HubSpot</span>
+              <span class="hdr-drop-desc">Marketplace-ready apps</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/0e0d44c167edf39922c0df631d9e5e99f62034fb.svg" alt="" class="w-6 h-6" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Don't see your CRM?</span>
+              <span class="hdr-drop-desc">Contact Us</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="hdr-mobile-nav-link">Pricing</a>
+    <a href="#" class="hdr-mobile-nav-link">Customers</a>
+    <div class="hdr-mobile-accord" id="mResources">
+      <button class="hdr-mobile-accord-btn" id="mResourcesBtn" aria-expanded="false">
+        <span class="hdr-mobile-link-text">Resources</span>
+        <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-mobile-chevron" alt="" />
+      </button>
+      <div class="hdr-mobile-accord-body" id="mResourcesBody" hidden>
+        <div class="hdr-mobile-drop">
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/0036024b74764adca8a06541ed1296f1bf427236.svg" alt="" class="w-6 h-6" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Blogs</span>
+              <span class="hdr-drop-desc">Tips, trends, and product stories.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/13beb2543b48ad10029ad2ab0ba6ef1daeda3282.svg" alt="" class="w-6 h-6" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">About Us</span>
+              <span class="hdr-drop-desc">The team behind Appnigma.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/45a875d6af3533a1b3baa9fd629d43e315c3045d.svg" alt="" class="w-6 h-6" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Changelog</span>
+              <span class="hdr-drop-desc">What's new and what changed.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mobile-drop-item">
+            <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/701d187827927684f2bba5dfb52e6f3a384f9ed3.svg" alt="" class="w-6 h-6" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Docs</span>
+              <span class="hdr-drop-desc">Guides, references, and how-tos.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hdr-mobile-footer">
+    <button class="hdr-mobile-btn hdr-mobile-btn--secondary">Sign In</button>
+    <button class="hdr-mobile-btn hdr-mobile-btn--primary">Book a demo</button>
+  </div>
+</div>
 
 <style>
-  .btn-primary {
-    background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #0085FF;
-    box-shadow: 0px 1px 2px rgba(28,63,173,0.48), 0px 0px 0px 1px #0085FF;
+  /* ===== SHARED DROP ITEMS ===== */
+  .hdr-drop-thumb {
+    width: 64px;
+    height: 64px;
+    border: 1px solid #e5e5e5;
+    background-color: #fafafa;
+    background-image:
+      linear-gradient(#e5e5e5 1px, transparent 1px),
+      linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+    background-size: 8px 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .hdr-drop-thumb-inner {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .hdr-drop-thumb-img {
+    position: absolute;
+    max-width: none;
+    width: 345.6px;
+    height: 200.64px;
+  }
+  .hdr-drop-thumb-img--sf { left: -214.25px; top: -16.25px; }
+  .hdr-drop-thumb-img--hs { left: -141.25px; top: -68.25px; }
+  .hdr-drop-thumb--icon {
+    background-color: #fafafa;
+    background-image:
+      linear-gradient(#e5e5e5 1px, transparent 1px),
+      linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+  .hdr-drop-text { display: flex; flex-direction: column; gap: 2px; }
+  .hdr-drop-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #525252;
+    line-height: 1.1;
+  }
+  .hdr-drop-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #737373;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  /* ===== STICKY WRAPPER ===== */
+  .hdr-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #fff;
+    /* needed so absolute mega panels are positioned relative to this */
+    isolation: isolate;
+  }
+
+  /* ===== HEADER BAR ===== */
+  .hdr-bar { border-bottom: 1px solid #e5e5e5; }
+  .hdr-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px;
+  }
+  .hdr-left { display: flex; align-items: center; gap: 32px; }
+  .hdr-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+  .hdr-logo { width: 24px; height: 24px; border-radius: 4.5px; object-fit: contain; }
+  .hdr-brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #0a0a0a;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .hdr-desktop-nav { display: flex; align-items: center; gap: 24px; }
+  .hdr-cta { display: flex; align-items: center; gap: 12px; }
+  .hdr-btn-ghost {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #202b30;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    letter-spacing: -0.14px;
+    white-space: nowrap;
+  }
+  .hdr-btn-ghost:hover { background: #f5f5f5; }
+  .hdr-btn-primary {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #2a83fc;
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc;
+    cursor: pointer;
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 8px;
+    letter-spacing: -0.14px;
+    white-space: nowrap;
+  }
+  .hdr-hamburger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* Desktop nav buttons */
+  .hdr-nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #525252;
+    text-decoration: none;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .hdr-nav-link:hover { color: #0a0a0a; }
+  .hdr-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #525252;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .hdr-nav-btn:hover { color: #0a0a0a; }
+  .hdr-nav-btn--active {
+    color: #0a0a0a;
+    border-bottom: 2px solid #2a83fc;
+    padding-bottom: 2px;
+  }
+  .hdr-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; }
+  .hdr-chevron--up { transform: rotate(180deg); }
+
+  /* ===== MEGA MENU PANEL ===== */
+  .hdr-mega {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    /* diagonal stripe pattern across the full width */
+    background-color: #f5f5f5;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #e0e0e0 0, #e0e0e0 1px,
+      transparent 0, transparent 50%
+    );
+    background-size: 10px 10px;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 200;
+    animation: megaFadeIn 0.15s ease;
+  }
+  @keyframes megaFadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hdr-mega[hidden] { display: none; }
+  .hdr-mega-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: stretch;
+  }
+  /* Left and right diagonal flanks */
+  .hdr-mega-flank {
+    width: 120px;
+    flex-shrink: 0;
+    /* transparent — shows through to the parent diagonal pattern */
+  }
+  /* White content zone in the middle */
+  .hdr-mega-content {
+    flex: 1;
+    background: #fff;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    padding: 24px;
+  }
+  .hdr-mega-items { display: flex; flex-direction: column; gap: 16px; }
+  .hdr-mega-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+  }
+  .hdr-mega-item:hover .hdr-drop-title { color: #0a0a0a; }
+
+  /* ===== MOBILE OVERLAY ===== */
+  .hdr-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .hdr-mobile-overlay[hidden] { display: none; }
+  .hdr-mobile-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 2;
+  }
+  .hdr-mobile-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .hdr-mobile-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 0; }
+  .hdr-mobile-nav-link {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #525252;
+    text-decoration: none;
+    padding: 12px 0;
+  }
+  .hdr-mobile-accord { width: 100%; }
+  .hdr-mobile-accord-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .hdr-mobile-link-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #525252;
+  }
+  .hdr-mobile-accord--open .hdr-mobile-accord-btn { border-bottom: 2px solid #2a83fc; padding-bottom: 10px; }
+  .hdr-mobile-accord--open .hdr-mobile-link-text { color: #0a0a0a; }
+  .hdr-mobile-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; flex-shrink: 0; }
+  .hdr-mobile-accord--open .hdr-mobile-chevron { transform: rotate(180deg); }
+  .hdr-mobile-accord-body { overflow: hidden; }
+  .hdr-mobile-accord-body[hidden] { display: none; }
+  .hdr-mobile-drop { border: 1px solid #e5e5e5; margin: 8px 0 4px; overflow: hidden; }
+  .hdr-mobile-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    text-decoration: none;
+    border-bottom: 1px solid #e5e5e5;
+    transition: background 0.12s;
+  }
+  .hdr-mobile-drop-item:last-child { border-bottom: none; }
+  .hdr-mobile-drop-item:hover { background: #fafafa; }
+  .hdr-mobile-drop-thumb {
+    width: 64px;
+    height: 64px;
+    border: 0.5px solid #e5e5e5;
+    background: #fafafa;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hdr-mobile-footer {
+    padding: 16px;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .hdr-mobile-btn {
+    width: 100%;
+    height: 32px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.14px;
+    cursor: pointer;
+  }
+  .hdr-mobile-btn--secondary {
+    background: #fff;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0px 1px 2px rgba(32,43,48,0.08);
+    color: #202b30;
+  }
+  .hdr-mobile-btn--primary {
+    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #2a83fc;
+    border: 1px solid #fff;
+    box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc;
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .hdr-inner { padding: 0 20px; }
+    .hdr-desktop-nav { display: none; }
+    .hdr-cta { display: none; }
+    .hdr-hamburger { display: flex; }
+    .hdr-mega { display: none !important; }
+  }
+  @media (min-width: 769px) {
+    .hdr-mobile-overlay { display: none !important; }
+    .hdr-hamburger { display: none; }
   }
 </style>
 
 <script>
-  const btn = document.getElementById('platform-btn');
-  const dropdown = document.getElementById('platform-dropdown');
-  const chevron = document.getElementById('platform-chevron');
+(function () {
+  /* ===== DESKTOP MEGA MENUS ===== */
+  var panels = {
+    platform:  { panel: document.getElementById('megaPlatform'),  btn: document.getElementById('dPlatformBtn'),  chev: document.getElementById('dPlatformChevron') },
+    resources: { panel: document.getElementById('megaResources'), btn: document.getElementById('dResourcesBtn'), chev: document.getElementById('dResourcesChevron') }
+  };
 
-  function openDropdown() {
-    dropdown?.classList.remove('hidden');
-    btn?.setAttribute('aria-expanded', 'true');
-    chevron?.style.setProperty('transform', 'rotate(180deg)');
-  }
-  function closeDropdown() {
-    dropdown?.classList.add('hidden');
-    btn?.setAttribute('aria-expanded', 'false');
-    chevron?.style.setProperty('transform', 'rotate(0deg)');
+  function closeAll() {
+    Object.values(panels).forEach(function (d) {
+      if (!d.panel) return;
+      d.panel.hidden = true;
+      if (d.btn) { d.btn.setAttribute('aria-expanded', 'false'); d.btn.classList.remove('hdr-nav-btn--active'); }
+      if (d.chev) d.chev.classList.remove('hdr-chevron--up');
+    });
   }
 
-  btn?.addEventListener('click', (e) => {
+  function toggle(key, e) {
     e.stopPropagation();
-    const isOpen = dropdown && !dropdown.classList.contains('hidden');
-    isOpen ? closeDropdown() : openDropdown();
-  });
-
-  document.addEventListener('click', (e) => {
-    const menu = document.getElementById('platform-menu');
-    if (menu && !menu.contains(e.target as Node) && dropdown && !dropdown.contains(e.target as Node)) {
-      closeDropdown();
+    var d = panels[key];
+    var isOpen = !d.panel.hidden;
+    closeAll();
+    if (!isOpen) {
+      d.panel.hidden = false;
+      d.btn.setAttribute('aria-expanded', 'true');
+      d.btn.classList.add('hdr-nav-btn--active');
+      d.chev.classList.add('hdr-chevron--up');
     }
+  }
+
+  if (panels.platform.btn)  panels.platform.btn.addEventListener('click',  function(e){ toggle('platform', e); });
+  if (panels.resources.btn) panels.resources.btn.addEventListener('click', function(e){ toggle('resources', e); });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+
+  /* ===== MOBILE OVERLAY ===== */
+  var overlay  = document.getElementById('mobileOverlay');
+  var openBtn  = document.getElementById('mobileMenuBtn');
+  var closeBtn = document.getElementById('mobileCloseBtn');
+
+  function openMobile() {
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeMobile() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+    closeAccordion('mPlatform', 'mPlatformBody', 'mPlatformBtn');
+    closeAccordion('mResources', 'mResourcesBody', 'mResourcesBtn');
+  }
+
+  if (openBtn)  openBtn.addEventListener('click', openMobile);
+  if (closeBtn) closeBtn.addEventListener('click', closeMobile);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay && !overlay.hidden) closeMobile();
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDropdown();
-  });
+  /* ===== MOBILE ACCORDIONS ===== */
+  function openAccordion(wrapId, bodyId, btnId) {
+    var wrap = document.getElementById(wrapId), body = document.getElementById(bodyId), btn = document.getElementById(btnId);
+    if (!wrap || !body || !btn) return;
+    wrap.classList.add('hdr-mobile-accord--open'); body.hidden = false; btn.setAttribute('aria-expanded', 'true');
+  }
+  function closeAccordion(wrapId, bodyId, btnId) {
+    var wrap = document.getElementById(wrapId), body = document.getElementById(bodyId), btn = document.getElementById(btnId);
+    if (!wrap || !body || !btn) return;
+    wrap.classList.remove('hdr-mobile-accord--open'); body.hidden = true; btn.setAttribute('aria-expanded', 'false');
+  }
+  function initMobileAccordion(wrapId, bodyId, btnId) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOpen = document.getElementById(wrapId).classList.contains('hdr-mobile-accord--open');
+      if (isOpen) closeAccordion(wrapId, bodyId, btnId); else openAccordion(wrapId, bodyId, btnId);
+    });
+  }
+  initMobileAccordion('mPlatform', 'mPlatformBody', 'mPlatformBtn');
+  initMobileAccordion('mResources', 'mResourcesBody', 'mResourcesBtn');
+})();
 </script>

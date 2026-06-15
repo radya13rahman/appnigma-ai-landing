@@ -95,7 +95,7 @@ details[open] .faq-icon { transform: rotate(45deg); }
 
   /* ---------- Hero ---------- */
   .hero-section { min-height: auto !important; }
-  .hero-content { padding-top: 56px !important; padding-bottom: 320px !important; min-height: auto !important; }
+  .hero-content { padding-top: 56px !important; padding-bottom: 480px !important; min-height: auto !important; }
   .hero-h1 { font-size: 40px !important; letter-spacing: -0.8px !important; }
   /* hide the wide left white gradient so the hero art shows below the copy */
   .hero-left-gradient { display: none; }
@@ -103,17 +103,17 @@ details[open] .faq-icon { transform: rotate(45deg); }
   .hero-badges { flex-wrap: wrap !important; }
   /* illustration: zoomed, anchored to bottom, cropped */
   .hero-bg-img {
-    height: 340px !important;
+    height: 480px !important;
     top: auto !important;
     object-fit: cover !important;
-    object-position: 57% center !important;
+    object-position: 76% center !important;
   }
   /* white overlay gradient for hero on mobile */
   .hero-bg-overlay {
     background: linear-gradient(180deg,
-      rgba(255,255,255,1) 67%,
-      rgba(255,255,255,0) 76%,
-      rgba(255,255,255,0) 91%,
+      rgba(255,255,255,1) 55%,
+      rgba(255,255,255,0) 65%,
+      rgba(255,255,255,0) 88%,
       rgba(255,255,255,1) 100%) !important;
   }
 
@@ -138,8 +138,8 @@ details[open] .faq-icon { transform: rotate(45deg); }
   /* ---------- How it works ---------- */
   .how-it-works-row { flex-direction: column; }
   .how-it-works-col { width: 100% !important; }
-  .how-it-works-visual { height: 360px !important; align-self: auto !important; }
-  .how-it-works-browser { width: 86% !important; height: 300px !important; }
+  .how-it-works-visual { height: auto !important; align-self: auto !important; padding: 40px 20px !important; }
+  .how-it-works-browser { width: 400px !important; height: 388px !important; max-width: 100% !important; }
 
   /* ---------- Trust (dark) ---------- */
   section.bg-\[\#151515\] .border.border-\[\#3d3d3d\] > .flex { flex-direction: column; }

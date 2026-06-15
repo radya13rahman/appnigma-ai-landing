@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salesforce — Appnigma AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-subtle: #fafafa;
+      --color-bg-dark: #151515;
+      --color-bg-dark-card: #262626;
+      --color-border: #e5e5e5;
+      --color-border-dark: #3d3d3d;
+      --color-text-primary: #0a0a0a;
+      --color-text-secondary: #525252;
+      --color-text-muted: #737373;
+      --color-text-white: #ffffff;
+      --color-accent: #2a83fc;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+      --section-px: 120px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-card: 0px 0px 0px 0.775px rgba(0,0,0,0.08), 0px 1.55px 1.55px rgba(0,0,0,0.04), 0px 6.2px 12.4px -3.1px rgba(0,0,0,0.04);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); color: var(--color-text-primary); background: var(--color-bg); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4 { font-family: var(--font-heading); }
+    img { display: block; max-width: 100%; }
+    button { cursor: pointer; font-family: inherit; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== UTILITY ===== */
+    .u-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* ===== HEADER (shared drop items) ===== */
+    .hdr-drop-thumb { width:64px; height:64px; border:1px solid #e5e5e5; background-color:#fafafa; background-image:linear-gradient(#e5e5e5 1px,transparent 1px),linear-gradient(90deg,#e5e5e5 1px,transparent 1px); background-size:8px 8px; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
+    .hdr-drop-thumb-inner { position:relative; width:64px; height:64px; overflow:hidden; flex-shrink:0; }
+    .hdr-drop-thumb-img { position:absolute; max-width:none; width:345.6px; height:200.64px; }
+    .hdr-drop-thumb-img--sf { left:-214.25px; top:-16.25px; }
+    .hdr-drop-thumb-img--hs { left:-141.25px; top:-68.25px; }
+    .hdr-drop-thumb--icon { background-color:#fafafa; background-image:linear-gradient(#e5e5e5 1px,transparent 1px),linear-gradient(90deg,#e5e5e5 1px,transparent 1px); background-size:8px 8px; }
+    .hdr-drop-text { display:flex; flex-direction:column; gap:2px; }
+    .hdr-drop-title { font-family:var(--font-heading); font-weight:600; font-size:14px; color:#525252; line-height:1.1; letter-spacing:-0.02px; }
+    .hdr-drop-desc { font-family:var(--font-heading); font-weight:400; font-size:14px; color:#525252; line-height:1.1; letter-spacing:-0.02px; white-space:nowrap; }
+
+    /* Desktop nav */
+    .hdr-nav-link { font-family:var(--font-heading); font-weight:500; font-size:14px; color:#525252; text-decoration:none; transition:color 0.15s; white-space:nowrap; }
+    .hdr-nav-link:hover { color:#0a0a0a; }
+    .hdr-nav-btn { display:flex; align-items:center; gap:4px; font-family:var(--font-heading); font-weight:500; font-size:14px; color:#525252; background:none; border:none; cursor:pointer; padding:0; transition:color 0.15s; white-space:nowrap; position:relative; }
+    .hdr-nav-btn:hover { color:#0a0a0a; }
+    .hdr-nav-btn--active { color:#0a0a0a; border-bottom:2px solid #2a83fc; padding-bottom:2px; }
+    .hdr-chevron { width:14px; height:14px; transition:transform 0.2s ease; }
+    .hdr-chevron--up { transform:rotate(180deg); }
+
+    /* Header sticky wrapper */
+    .hdr-sticky { position:sticky; top:0; z-index:100; background:#fff; isolation:isolate; }
+
+    /* Header bar */
+    .hdr-bar { border-bottom:1px solid #e5e5e5; }
+    .hdr-inner { max-width:1440px; margin:0 auto; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 120px; }
+    .hdr-left { display:flex; align-items:center; gap:32px; }
+    .hdr-brand { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+    .hdr-logo { width:24px; height:24px; border-radius:4.5px; object-fit:contain; }
+    .hdr-brand-name { font-family:var(--font-heading); font-weight:500; font-size:16px; color:#0a0a0a; letter-spacing:-0.02em; white-space:nowrap; }
+    .hdr-desktop-nav { display:flex; align-items:center; gap:24px; }
+    .hdr-cta { display:flex; align-items:center; gap:12px; }
+    .hdr-btn-ghost { font-family:var(--font-heading); font-weight:500; font-size:14px; color:#202b30; background:none; border:none; cursor:pointer; padding:8px 12px; border-radius:8px; letter-spacing:-0.14px; white-space:nowrap; }
+    .hdr-btn-ghost:hover { background:#f5f5f5; }
+    .hdr-btn-primary { font-family:var(--font-heading); font-weight:500; font-size:14px; color:#fff; background:linear-gradient(rgba(255,255,255,0.12) 0%,rgba(255,255,255,0) 100%),#2a83fc; border:1px solid #fff; box-shadow:0px 1px 2px rgba(37,62,167,0.48),0px 0px 0px 1px #2a83fc; cursor:pointer; padding:0 12px; height:32px; border-radius:8px; letter-spacing:-0.14px; white-space:nowrap; }
+    .hdr-hamburger { display:none; align-items:center; justify-content:center; width:36px; height:36px; background:none; border:none; cursor:pointer; padding:0; }
+
+    /* Mega menu panel — absolute overlay */
+    .hdr-mega {
+      position:absolute;
+      left:0;
+      right:0;
+      top:100%;
+      background-color:#fafafa;
+      background-image:repeating-linear-gradient(-45deg,#d9d9d9 0,#d9d9d9 1px,transparent 0,transparent 50%);
+      background-size:10px 10px;
+      border:1px solid #e5e5e5;
+      border-top:none;
+      z-index:200;
+      animation:megaFadeIn 0.15s ease;
+    }
+    @keyframes megaFadeIn {
+      from { opacity:0; transform:translateY(-4px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .hdr-mega[hidden] { display:none; }
+    .hdr-mega-inner { max-width:1440px; margin:0 auto; padding:24px 120px; background:#fff; }
+    .hdr-mega-items { display:flex; flex-direction:column; gap:16px; }
+    .hdr-mega-item { display:flex; align-items:center; gap:16px; text-decoration:none; }
+    .hdr-mega-item:hover .hdr-drop-title { color:#0a0a0a; }
+
+    /* Mobile overlay */
+    .hdr-mobile-overlay { position:fixed; inset:0; background:#fff; z-index:200; display:flex; flex-direction:column; overflow-y:auto; }
+    .hdr-mobile-overlay[hidden] { display:none; }
+    .hdr-mobile-top { display:flex; align-items:center; justify-content:space-between; padding:16px; border-bottom:1px solid #e5e5e5; flex-shrink:0; position:sticky; top:0; background:#fff; z-index:2; }
+    .hdr-mobile-close { display:flex; align-items:center; justify-content:center; width:24px; height:24px; background:none; border:none; cursor:pointer; padding:0; }
+    .hdr-mobile-body { flex:1; padding:16px; display:flex; flex-direction:column; gap:0; }
+    .hdr-mobile-nav-link { display:block; font-family:var(--font-heading); font-weight:500; font-size:14px; color:#525252; text-decoration:none; padding:12px 0; }
+    .hdr-mobile-accord { width:100%; }
+    .hdr-mobile-accord-btn { display:flex; align-items:center; justify-content:flex-start; gap:8px; width:100%; padding:12px 0; background:none; border:none; cursor:pointer; text-align:left; }
+    .hdr-mobile-link-text { font-family:var(--font-heading); font-weight:500; font-size:14px; color:#525252; letter-spacing:0; }
+    .hdr-mobile-accord--open .hdr-mobile-accord-btn { border-bottom:2px solid #2a83fc; padding-bottom:10px; }
+    .hdr-mobile-accord--open .hdr-mobile-link-text { color:#0a0a0a; }
+    .hdr-mobile-chevron { width:14px; height:14px; transition:transform 0.2s ease; flex-shrink:0; }
+    .hdr-mobile-accord--open .hdr-mobile-chevron { transform:rotate(180deg); }
+    .hdr-mobile-accord-body { overflow:hidden; }
+    .hdr-mobile-accord-body[hidden] { display:none; }
+    .hdr-mobile-drop { border:1px solid #e5e5e5; margin:8px 0 4px; overflow:hidden; }
+    .hdr-mobile-drop-item { display:flex; align-items:center; gap:16px; padding:16px; text-decoration:none; border-bottom:1px solid #e5e5e5; transition:background 0.12s; }
+    .hdr-mobile-drop-item:last-child { border-bottom:none; }
+    .hdr-mobile-drop-item:hover { background:#fafafa; }
+    .hdr-mobile-drop-thumb { width:64px; height:64px; border:0.5px solid #e5e5e5; background:#fafafa; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .hdr-mobile-footer { padding:16px; border-top:1px solid #e5e5e5; display:flex; flex-direction:column; gap:8px; flex-shrink:0; }
+    .hdr-mobile-btn { width:100%; height:32px; border-radius:8px; font-family:var(--font-heading); font-weight:500; font-size:14px; letter-spacing:-0.14px; cursor:pointer; }
+    .hdr-mobile-btn--secondary { background:#fff; border:1px solid #f5f5f5; box-shadow:0px 1px 2px rgba(32,43,48,0.08); color:#202b30; }
+    .hdr-mobile-btn--primary { background:linear-gradient(rgba(255,255,255,0.12) 0%,rgba(255,255,255,0) 100%),#2a83fc; border:1px solid #fff; box-shadow:0px 1px 2px rgba(37,62,167,0.48),0px 0px 0px 1px #2a83fc; color:#fff; }
+
+    @media (max-width:768px) {
+      .hdr-inner { padding:0 20px; }
+      .hdr-desktop-nav { display:none; }
+      .hdr-cta { display:none; }
+      .hdr-hamburger { display:flex; }
+      .hdr-mega { display:none !important; }
+    }
+    @media (min-width:769px) {
+      .hdr-mobile-overlay { display:none !important; }
+      .hdr-hamburger { display:none; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      height: 836px;
+    }
+    /* Full-bleed background image */
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .hero__bg-img {
+      position: absolute;
+      left: 0;
+      top: 12.09%;
+      width: 100%;
+      height: 107.78%;
+      max-width: none;
+      object-fit: cover;
+    }
+    /* Top+bottom white gradient overlay */
+    .hero__bg-fade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, #fff 13.988%, rgba(255,255,255,0) 24.282%),
+        linear-gradient(180deg, rgba(255,255,255,0) 51.923%, #fff 94.712%);
+    }
+    /* Left white gradient overlay — 893px wide, from white to transparent */
+    .hero__left-fade {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 893px;
+      height: 100%;
+      background: linear-gradient(90deg, #fff 65.385%, rgba(255,255,255,0) 100%);
+      pointer-events: none;
+    }
+    /* Content sits above overlays */
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 143px var(--section-px) 0;
+    }
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      width: 591px;
+      max-width: 100%;
+    }
+    .hero__desc-group { display: flex; flex-direction: column; gap: 24px; }
+    .hero__h1 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      font-size: 64px;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      letter-spacing: -1.2px;
+    }
+    .hero__desc {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+    .hero__actions { display: flex; align-items: center; gap: 8px; }
+    .hero__btn {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 14px;
+      height: 36px;
+      padding: 0 12px;
+      border-radius: 8px;
+      letter-spacing: -0.14px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .hero__btn--primary {
+      background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), linear-gradient(90deg, #2a83fc 0%, #2a83fc 100%);
+      border: 1px solid #fff;
+      box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc;
+      color: #fff;
+    }
+    .hero__btn--secondary {
+      background: #fff;
+      border: 1px solid #f5f5f5;
+      box-shadow: 0px 1px 2px rgba(32,43,48,0.08);
+      color: #202b30;
+    }
+    /* Info row (avatars + text) */
+    .hero__info { display: flex; flex-direction: column; }
+    .hero__info-row { display: flex; align-items: center; gap: 24px; padding: 16px 0; }
+    .hero__avatars { display: flex; align-items: center; }
+    .hero__avatar-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0.96px solid #fff;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(180deg, #d1d1d1, #f9f9f9);
+      margin-right: -16px;
+      position: relative;
+    }
+    .hero__avatar-wrap:last-child { margin-right: 0; }
+    .hero__avatar-wrap img {
+      position: absolute;
+      bottom: -3.36px;
+      left: calc(50% + 0.48px);
+      transform: translateX(-50%);
+      width: 48.96px;
+      height: 48.96px;
+      object-fit: cover;
+    }
+    .hero__info-text { display: flex; flex-direction: column; }
+    .hero__info-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+    .hero__info-sub {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    /* Hide mobile-only elements on desktop */
+    .hero__mobile-bg { display: none; }
+
+    /* Hero responsive — tablet */
+    @media (max-width: 1024px) {
+      .hero { height: auto; min-height: 600px; }
+      .hero__inner { padding-top: 80px; }
+      .hero__h1 { font-size: 48px; }
+      .hero__content { width: 100%; max-width: 520px; }
+      .hero__left-fade { width: 100%; }
+    }
+
+    /* Hero responsive — mobile (matches Figma node 1-11394) */
+    @media (max-width: 768px) {
+      /* Section tall enough for content (426px) + cube image (335px) + 24px padding */
+      .hero {
+        height: auto;
+        min-height: 809px;
+        overflow: visible;
+        padding: 24px 20px 0;
+        border-bottom: 1px solid var(--color-border);
+      }
+      /* Hide desktop background layers */
+      .hero__bg { display: none; }
+      .hero__left-fade { display: none; }
+
+      .hero__inner {
+        padding: 0;
+        position: relative;
+        min-height: 785px;
+      }
+
+      /* Mobile image: absolute, top 450px, right 0, 335px tall, 390px wide */
+      /* uses a separate <picture> element we inject via the mobile-img class */
+      .hero__mobile-bg {
+        display: block;
+        position: absolute;
+        top: 450px;
+        right: 0;
+        width: 390px;
+        height: 335px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .hero__mobile-bg-img {
+        position: absolute;
+        top: -110.31px;
+        right: -68.7px;
+        width: 808.704px;
+        height: 555.725px;
+        max-width: none;
+        object-fit: cover;
+        object-position: bottom;
+      }
+      .hero__mobile-bg-fade {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, #fff 13.988%, rgba(255,255,255,0) 24.282%),
+          linear-gradient(180deg, rgba(255,255,255,0) 43.446%, #fff 79.249%);
+      }
+
+      /* Content: 426px tall, column, gap 32px */
+      .hero__content {
+        width: 100%;
+        height: 426px;
+        gap: 32px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Desc group: gap 16px */
+      .hero__desc-group { gap: 16px; }
+
+      /* H1: 36px */
+      .hero__h1 { font-size: 36px; letter-spacing: -1.2px; }
+
+      /* Body: 14px */
+      .hero__desc { font-size: 14px; }
+
+      /* Info row: on mobile avatars are stacked above text (flex-col gap-16px) */
+      .hero__info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 16px 0;
+      }
+
+      /* Avatars: 32px on mobile */
+      .hero__avatar-wrap { width: 32px; height: 32px; }
+      .hero__avatar-wrap img { width: 32.64px; height: 32.64px; }
+
+      /* Text: 14px, stacked */
+      .hero__info-text { gap: 8px; display: flex; flex-direction: column; }
+      .hero__info-title { font-size: 14px; white-space: normal; font-weight: 600; }
+      .hero__info-sub { font-size: 14px; white-space: normal; }
+    }
+
+    /* ===== SOCIAL PROOF BAR ===== */
+    .social-proof { background: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+    .social-proof__inner { display: flex; }
+    .social-proof__hatch { flex: 1; min-width: var(--section-px); background: repeating-linear-gradient(45deg, #ececec 0, #ececec 1px, transparent 1px, transparent 10px); }
+    .social-proof__center { width: 1200px; max-width: calc(100% - 240px); border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); }
+    .social-proof__heading { display: flex; align-items: center; justify-content: center; height: 80px; border-bottom: 1px solid var(--color-border); }
+    .social-proof__heading p { font-family: var(--font-heading); font-weight: 500; font-size: 24px; color: var(--color-text-primary); letter-spacing: -0.04em; white-space: nowrap; }
+    .social-proof__logos { display: flex; border-bottom: 1px solid var(--color-border); }
+    .logo-cell { position: relative; flex: 1; height: 160px; overflow: hidden; }
+    .logo-cell + .logo-cell { border-left: 1px dashed var(--color-border); }
+    .logo-cell img { position: absolute; top: 50%; left: 50%; height: 30px; opacity: 0; transform: translate(-50%, calc(-50% + 32px)); transition: transform 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.55s ease; pointer-events: none; }
+    .logo-cell img.is-active { opacity: 1; transform: translate(-50%, -50%); }
+    .logo-cell img.is-exit { opacity: 0; transform: translate(-50%, calc(-50% - 32px)); }
+    .logo-cell img[src*="46f47ea6"] { width: 92px; }
+    .logo-cell img[src*="563b12da"] { width: 97px; }
+    .logo-cell img[src*="8b04729d"] { width: 42px; }
+    .logo-cell img[src*="c52285"] { width: 30px; }
+    .logo-cell img[src*="1d3f02"] { width: 44px; }
+    .social-proof__spacer { height: 80px; }
+
+    /* ===== WHY SECTION (DARK) ===== */
+    .why { background: var(--color-bg-dark); border-top: 1px solid var(--color-border-dark); border-bottom: 1px solid var(--color-border-dark); }
+    .why__inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--section-px); }
+    .why__header { border-left: 1px solid var(--color-border-dark); border-right: 1px solid var(--color-border-dark); padding: 64px 48px 48px; display: flex; flex-direction: column; gap: 16px; }
+    .why__tag { display: inline-flex; align-items: center; padding: 5px 10px; border: 1px solid var(--color-border-dark); border-radius: var(--radius-sm); font-family: var(--font-body); font-weight: 400; font-size: 12px; color: #a3a3a3; align-self: flex-start; }
+    .why__h2 { font-family: var(--font-heading); font-weight: 700; font-size: 40px; color: var(--color-text-white); line-height: 1.1; letter-spacing: -1.5px; }
+    .why__body { display: flex; border-left: 1px solid var(--color-border-dark); border-right: 1px solid var(--color-border-dark); border-top: 1px solid var(--color-border-dark); }
+    .why__visual { flex-shrink: 0; width: 600px; border-right: 1px solid var(--color-border-dark); display: flex; align-items: center; justify-content: center; padding: 48px; }
+    .why__browser { background: #1e1e1e; border-radius: 9px; overflow: hidden; width: 100%; max-width: 400px; box-shadow: var(--shadow-card); }
+    .why__browser-chrome { display: flex; align-items: center; height: 28px; background: #2a2a2a; box-shadow: 0 0 0 0.775px rgba(255,255,255,0.08); }
+    .why__browser-dots { display: flex; align-items: center; gap: 4px; padding: 0 10px; }
+    .why__browser-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .why__browser-dot--red { background: #ee6d5e; }
+    .why__browser-dot--yellow { background: #f3bf4a; }
+    .why__browser-dot--green { background: #5dc753; }
+    .why__browser-address { flex: 1; display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .why__browser-address span { font-family: 'Courier New', monospace; font-size: 9px; color: #7d7d7d; }
+    .why__browser-content { display: flex; flex-direction: column; }
+    .why__browser-grid-row { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid rgba(255,255,255,0.06); height: 80px; }
+    .why__browser-grid-row:last-child { border-bottom: none; }
+    .why__browser-grid-cell { background: #1e1e1e; border-right: 1px solid rgba(255,255,255,0.06); }
+    .why__browser-grid-cell:last-child { border-right: none; }
+    .why__browser-prompt { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .why__browser-prompt-icon { width: 25px; height: 25px; background: #2a2a2a; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why__browser-prompt-icon img { width: 12px; height: 12px; }
+    .why__browser-prompt-text { font-family: 'Courier New', monospace; font-size: 11px; color: #d0d0d0; font-weight: 500; letter-spacing: -0.25px; }
+    .why__features { flex: 1; display: flex; flex-direction: column; }
+    .why__feature { border-bottom: 1px solid var(--color-border-dark); overflow: hidden; }
+    .why__feature:last-child { border-bottom: none; }
+    .why__feature-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 28px 40px; background: none; border: none; cursor: pointer; text-align: left; gap: 16px; }
+    .why__feature-title { font-family: var(--font-heading); font-weight: 500; font-size: 18px; color: var(--color-text-white); line-height: 1.2; }
+    .why__feature-icon { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .why__feature-icon svg { transition: transform 0.25s; }
+    .why__feature--open .why__feature-icon svg { transform: rotate(45deg); }
+    .why__feature-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .why__feature--open .why__feature-body { max-height: 200px; }
+    .why__feature-desc { padding: 0 40px 28px; font-family: var(--font-body); font-weight: 400; font-size: 14px; color: #a3a3a3; line-height: 1.6; }
+
+    /* ===== COMPARE ===== */
+    .compare { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .compare__inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--section-px); }
+    .compare__wrap { border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); }
+    .compare__header { padding: 48px 48px 32px; border-bottom: 1px solid var(--color-border); }
+    .compare__tag { display: inline-flex; padding: 5px 10px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 12px; color: var(--color-text-secondary); margin-bottom: 16px; }
+    .compare__h2 { font-family: var(--font-heading); font-weight: 600; font-size: 32px; color: var(--color-text-primary); letter-spacing: -1px; }
+    .compare__table-wrap { overflow-x: auto; }
+    .compare__table { width: 100%; border-collapse: collapse; }
+    .compare__table th, .compare__table td { border: 1px solid var(--color-border); padding: 0; }
+    .compare__table th:first-child, .compare__table td:first-child { border-left: none; }
+    .compare__table th:last-child, .compare__table td:last-child { border-right: none; }
+    .compare__table thead th { padding: 20px 24px; font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--color-text-primary); background: var(--color-bg-subtle); text-align: center; }
+    .compare__table thead th:first-child { text-align: left; color: var(--color-text-muted); font-weight: 400; }
+    .compare__th-logo { display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .compare__th-logo img { height: 18px; object-fit: contain; }
+    .compare__table tbody td { padding: 0; vertical-align: middle; }
+    .compare__table tbody td:first-child { padding: 16px 24px; font-family: var(--font-body); font-size: 14px; color: var(--color-text-primary); }
+    .compare__cell-inner { display: flex; align-items: center; justify-content: center; padding: 16px 24px; }
+    .compare__check { width: 20px; height: 20px; border-radius: 50%; background: var(--color-bg-dark); display: flex; align-items: center; justify-content: center; }
+
+    /* ===== TESTIMONIAL ===== */
+    .testimonial { background: var(--color-bg-subtle); }
+    .testimonial__header-wrap { padding: 0 var(--section-px); }
+    .testimonial__header { border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; padding: 32px 40px; }
+    .testimonial__h2 { font-family: var(--font-heading); font-weight: 500; font-size: 32px; color: var(--color-text-primary); letter-spacing: -0.04em; white-space: nowrap; }
+    .testimonial__nav { display: flex; align-items: center; gap: 12px; }
+    .testimonial__nav-btn { width: 36px; height: 36px; border-radius: var(--radius-md); border: 1px solid #f5f5f5; background: #fff; box-shadow: 0px 1px 2px rgba(32,43,48,0.08); display: flex; align-items: center; justify-content: center; }
+    .testimonial__card-wrap { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); padding: 0 var(--section-px); }
+    .testimonial__card { background: #fff; border: 1px solid var(--color-border); padding: 40px; }
+    .testimonial__card-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; }
+    .testimonial__card-content { max-width: 540px; display: flex; flex-direction: column; gap: 24px; }
+    .testimonial__company-logo { height: 24px; object-fit: contain; }
+    .testimonial__quote { font-family: var(--font-body); font-weight: 400; font-size: 18px; color: var(--color-text-primary); line-height: 1.6; letter-spacing: -0.02em; }
+    .testimonial__attribution { display: flex; flex-direction: column; gap: 2px; }
+    .testimonial__name { font-family: var(--font-body); font-size: 14px; color: var(--color-text-primary); }
+    .testimonial__role { font-family: var(--font-body); font-size: 12px; color: var(--color-text-muted); }
+    .testimonial__photo { flex-shrink: 0; height: 280px; aspect-ratio: 1; }
+    .testimonial__photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ===== STATS ===== */
+    .stats { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+    .stats__inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--section-px); }
+    .stats__border { border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); }
+    .stats__grid { display: flex; height: 158px; }
+    .stats__cell { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 48px; border-right: 1px solid var(--color-border); }
+    .stats__cell:last-child { border-right: none; }
+    .stats__cell:nth-child(2n) { background: var(--color-bg-subtle); }
+    .stats__value { font-family: var(--font-heading); font-weight: 700; font-size: 32px; color: var(--color-bg-dark); line-height: 1.1; text-align: center; }
+    .stats__label { font-family: var(--font-body); font-size: 14px; color: #4d4d4d; line-height: 1.5; text-align: center; }
+
+    /* ===== FINAL CTA ===== */
+    .cta { background: var(--color-bg-dark); border-top: 1px solid var(--color-border-dark); border-bottom: 1px solid var(--color-border-dark); overflow: hidden; position: relative; min-height: 480px; }
+    .cta__inner { max-width: 1440px; margin: 0 auto; padding: 0 var(--section-px); display: flex; align-items: center; min-height: 480px; }
+    .cta__content { max-width: 560px; padding: 80px 0; position: relative; z-index: 1; }
+    .cta__h2 { font-family: var(--font-heading); font-weight: 700; font-size: 48px; color: var(--color-text-white); line-height: 1.05; letter-spacing: -2px; margin-bottom: 32px; }
+    .cta__actions { display: flex; align-items: center; gap: 12px; }
+    .cta__btn { font-family: var(--font-body); font-weight: 600; font-size: 14px; padding: 10px 20px; border-radius: var(--radius-sm); }
+    .cta__btn--primary { background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #2a83fc; border: 1px solid #fff; box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc; color: #fff; }
+    .cta__btn--ghost { background: none; border: 1px solid var(--color-border-dark); color: var(--color-text-white); }
+    .cta__sphere { position: absolute; right: var(--section-px); top: 50%; transform: translateY(-50%); width: 400px; height: 400px; object-fit: contain; pointer-events: none; }
+
+    /* ===== FOOTER ===== */
+    .footer { background: var(--color-bg); border-top: 1px solid var(--color-border); }
+    .footer__inner { max-width: 1440px; margin: 0 auto; padding: 60px var(--section-px) 0; }
+    .footer__top { display: flex; align-items: flex-start; justify-content: space-between; padding-bottom: 48px; }
+    .footer__brand { max-width: 240px; }
+    .footer__brand-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .footer__brand-logo img { width: 24px; height: 24px; border-radius: 4.5px; object-fit: contain; }
+    .footer__brand-logo span { font-family: var(--font-heading); font-weight: 500; font-size: 15px; color: var(--color-text-primary); }
+    .footer__brand-desc { font-family: var(--font-body); font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+    .footer__cols { display: flex; gap: 48px; }
+    .footer__col { min-width: 120px; }
+    .footer__col-title { font-family: var(--font-body); font-weight: 600; font-size: 12px; color: var(--color-text-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+    .footer__col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer__col-link { font-family: var(--font-body); font-size: 13px; color: var(--color-text-secondary); transition: color 0.15s; }
+    .footer__col-link:hover { color: var(--color-text-primary); }
+    .footer__bottom { border-top: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+    .footer__copy { font-family: var(--font-body); font-size: 12px; color: var(--color-text-muted); }
+    .footer__bottom-links { display: flex; align-items: center; gap: 20px; }
+    .footer__bottom-link { font-family: var(--font-body); font-size: 12px; color: var(--color-text-muted); transition: color 0.15s; }
+    .footer__bottom-link:hover { color: var(--color-text-primary); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      :root { --section-px: 40px; }
+      .nav__links { display: none; }
+      .nav__actions .nav__btn--ghost { display: none; }
+      .nav__actions .nav__btn--primary { display: none; }
+      .nav__hamburger { display: flex; }
+      .hero__h1 { font-size: 42px; }
+      .hero__img { width: 400px; }
+      .why__visual { width: 400px; padding: 32px; }
+      .why__h2 { font-size: 32px; }
+      .cta__sphere { width: 300px; height: 300px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --section-px: 20px; }
+      /* Hero */
+      .hero__inner { flex-direction: column; min-height: auto; }
+      .hero__content { max-width: 100%; padding: 56px 0 40px; }
+      .hero__h1 { font-size: 36px; letter-spacing: -1px; }
+      .hero__visual { width: 100%; justify-content: center; padding: 0 0 40px; }
+      .hero__img { width: 100%; max-width: 340px; }
+      /* Social proof */
+      .social-proof__hatch { min-width: 20px; flex: 0 0 20px; }
+      .social-proof__center { width: calc(100% - 40px); max-width: calc(100% - 40px); }
+      .social-proof__heading { height: auto; }
+      .social-proof__heading p { white-space: normal; text-align: center; font-size: 18px; padding: 24px 16px; }
+      .social-proof__logos { flex-wrap: wrap; }
+      .logo-cell { flex: 0 0 50%; height: 80px; }
+      .logo-cell + .logo-cell { border-left: none; }
+      .logo-cell:nth-child(2n) { border-left: 1px dashed var(--color-border); }
+      .logo-cell:nth-child(n+3) { border-top: 1px dashed var(--color-border); }
+      .logo-cell:nth-child(5) { flex: 0 0 100%; }
+      /* Why */
+      .why__body { flex-direction: column; }
+      .why__visual { width: 100%; border-right: none; border-bottom: 1px solid var(--color-border-dark); }
+      .why__h2 { font-size: 28px; }
+      .why__feature-btn { padding: 20px 24px; }
+      .why__feature-desc { padding: 0 24px 20px; }
+      /* Compare */
+      .compare__table-wrap { overflow-x: auto; }
+      .compare__table { min-width: 640px; }
+      /* Testimonial */
+      .testimonial__header-wrap { padding: 0 var(--section-px); }
+      .testimonial__h2 { font-size: 22px; white-space: normal; }
+      .testimonial__card-inner { flex-direction: column; }
+      .testimonial__photo { height: auto; width: 100%; aspect-ratio: 1; }
+      /* Stats */
+      .stats__grid { flex-wrap: wrap; height: auto; }
+      .stats__cell { flex: 0 0 50%; padding: 24px; border-bottom: 1px solid var(--color-border); }
+      .stats__cell:last-child { border-right: none; }
+      .stats__cell:nth-child(n+3) { border-bottom: none; }
+      /* CTA */
+      .cta__h2 { font-size: 32px; letter-spacing: -1px; }
+      .cta__sphere { display: none; }
+      .cta__content { padding: 64px 0; }
+      /* Footer */
+      .footer__top { flex-direction: column; gap: 40px; }
+      .footer__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .footer__bottom { flex-wrap: wrap; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <div class="hdr-sticky">
+    <header class="hdr-bar">
+      <div class="hdr-inner">
+        <div class="hdr-left">
+          <a href="/" class="hdr-brand">
+            <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="hdr-logo" />
+            <span class="hdr-brand-name">Appnigma AI</span>
+          </a>
+          <nav class="hdr-desktop-nav" id="desktopNav">
+            <button class="hdr-nav-btn" id="dPlatformBtn" aria-haspopup="true" aria-expanded="false" aria-controls="megaPlatform">
+              Platform
+              <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-chevron" id="dPlatformChevron" alt="" />
+            </button>
+            <a href="#" class="hdr-nav-link">Pricing</a>
+            <a href="#" class="hdr-nav-link">Customers</a>
+            <button class="hdr-nav-btn" id="dResourcesBtn" aria-haspopup="true" aria-expanded="false" aria-controls="megaResources">
+              Resources
+              <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-chevron" id="dResourcesChevron" alt="" />
+            </button>
+          </nav>
+        </div>
+        <div class="hdr-cta">
+          <button class="hdr-btn-ghost">Sign In</button>
+          <button class="hdr-btn-primary">Book a demo</button>
+        </div>
+        <button class="hdr-hamburger" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay">
+          <img src="/assets/5133102a7b8e9471deb07b0797ea635456bd33c5.svg" alt="" style="width:24px;height:24px;" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Platform mega panel -->
+    <div class="hdr-mega" id="megaPlatform" role="menu" hidden>
+      <div class="hdr-mega-inner">
+        <div class="hdr-mega-items">
+          <a href="/salesforce.html" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb">
+              <div class="hdr-drop-thumb-inner">
+                <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
+              </div>
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Salesforces</span>
+              <span class="hdr-drop-desc">Native managed packages</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb">
+              <div class="hdr-drop-thumb-inner">
+                <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--hs" alt="HubSpot" />
+              </div>
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">HubSpot</span>
+              <span class="hdr-drop-desc">Marketplace-ready apps</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/0e0d44c167edf39922c0df631d9e5e99f62034fb.svg" alt="" style="width:24px;height:24px;" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Don't see your CRM?</span>
+              <span class="hdr-drop-desc">Contact Us</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources mega panel -->
+    <div class="hdr-mega" id="megaResources" role="menu" hidden>
+      <div class="hdr-mega-inner">
+        <div class="hdr-mega-items">
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/0036024b74764adca8a06541ed1296f1bf427236.svg" alt="" style="width:24px;height:24px;" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Blogs</span>
+              <span class="hdr-drop-desc">Tips, trends, and product stories.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/13beb2543b48ad10029ad2ab0ba6ef1daeda3282.svg" alt="" style="width:24px;height:24px;" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">About Us</span>
+              <span class="hdr-drop-desc">The team behind Appnigma.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/45a875d6af3533a1b3baa9fd629d43e315c3045d.svg" alt="" style="width:24px;height:24px;" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Changelog</span>
+              <span class="hdr-drop-desc">What's new and what changed.</span>
+            </div>
+          </a>
+          <a href="#" class="hdr-mega-item" role="menuitem">
+            <div class="hdr-drop-thumb hdr-drop-thumb--icon">
+              <img src="/assets/701d187827927684f2bba5dfb52e6f3a384f9ed3.svg" alt="" style="width:24px;height:24px;" />
+            </div>
+            <div class="hdr-drop-text">
+              <span class="hdr-drop-title">Docs</span>
+              <span class="hdr-drop-desc">Guides, references, and how-tos.</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile overlay -->
+  <div id="mobileOverlay" class="hdr-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation" hidden>
+    <div class="hdr-mobile-top">
+      <a href="/" class="hdr-brand">
+        <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="hdr-logo" />
+        <span class="hdr-brand-name">Appnigma AI</span>
+      </a>
+      <button class="hdr-mobile-close" id="mobileCloseBtn" aria-label="Close menu">
+        <img src="/assets/99d2b8d71eac2419326778e36aecfe56160269ba.svg" alt="" style="width:24px;height:24px;" />
+      </button>
+    </div>
+    <div class="hdr-mobile-body">
+      <!-- Platform accordion -->
+      <div class="hdr-mobile-accord" id="mPlatform">
+        <button class="hdr-mobile-accord-btn" id="mPlatformBtn" aria-expanded="false">
+          <span class="hdr-mobile-link-text">Platform</span>
+          <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-mobile-chevron" alt="" />
+        </button>
+        <div class="hdr-mobile-accord-body" id="mPlatformBody" hidden>
+          <div class="hdr-mobile-drop">
+            <a href="/salesforce.html" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb">
+                <div class="hdr-drop-thumb-inner" style="width:64px;height:64px;">
+                  <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
+                </div>
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">Salesforces</span>
+                <span class="hdr-drop-desc">Native managed packages</span>
+              </div>
+            </a>
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb">
+                <div class="hdr-drop-thumb-inner" style="width:64px;height:64px;">
+                  <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--hs" alt="HubSpot" />
+                </div>
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">HubSpot</span>
+                <span class="hdr-drop-desc">Marketplace-ready apps</span>
+              </div>
+            </a>
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+                <img src="/assets/0e0d44c167edf39922c0df631d9e5e99f62034fb.svg" alt="" style="width:24px;height:24px;" />
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">Don't see your CRM?</span>
+                <span class="hdr-drop-desc">Contact Us</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="hdr-mobile-nav-link">Pricing</a>
+      <a href="#" class="hdr-mobile-nav-link">Customers</a>
+
+      <!-- Resources accordion -->
+      <div class="hdr-mobile-accord" id="mResources">
+        <button class="hdr-mobile-accord-btn" id="mResourcesBtn" aria-expanded="false">
+          <span class="hdr-mobile-link-text">Resources</span>
+          <img src="/assets/4d2e98748663381048e2d547c4aee7dd4eb9d2b0.svg" class="hdr-mobile-chevron" alt="" />
+        </button>
+        <div class="hdr-mobile-accord-body" id="mResourcesBody" hidden>
+          <div class="hdr-mobile-drop">
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+                <img src="/assets/0036024b74764adca8a06541ed1296f1bf427236.svg" alt="" style="width:24px;height:24px;" />
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">Blogs</span>
+                <span class="hdr-drop-desc">Tips, trends, and product stories.</span>
+              </div>
+            </a>
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+                <img src="/assets/13beb2543b48ad10029ad2ab0ba6ef1daeda3282.svg" alt="" style="width:24px;height:24px;" />
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">About Us</span>
+                <span class="hdr-drop-desc">The team behind Appnigma.</span>
+              </div>
+            </a>
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+                <img src="/assets/45a875d6af3533a1b3baa9fd629d43e315c3045d.svg" alt="" style="width:24px;height:24px;" />
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">Changelog</span>
+                <span class="hdr-drop-desc">What's new and what changed.</span>
+              </div>
+            </a>
+            <a href="#" class="hdr-mobile-drop-item">
+              <div class="hdr-mobile-drop-thumb hdr-drop-thumb--icon">
+                <img src="/assets/701d187827927684f2bba5dfb52e6f3a384f9ed3.svg" alt="" style="width:24px;height:24px;" />
+              </div>
+              <div class="hdr-drop-text">
+                <span class="hdr-drop-title">Docs</span>
+                <span class="hdr-drop-desc">Guides, references, and how-tos.</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hdr-mobile-footer">
+      <button class="hdr-mobile-btn hdr-mobile-btn--secondary">Sign In</button>
+      <button class="hdr-mobile-btn hdr-mobile-btn--primary">Book a demo</button>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <!-- Full-bleed background image with gradient overlays -->
+    <div class="hero__bg" aria-hidden="true">
+      <img src="/assets/75195996e7c99093b024e02f4d0267a71c585ef6.png" alt="" class="hero__bg-img" />
+      <div class="hero__bg-fade"></div>
+    </div>
+    <!-- Left white fade so text stays readable -->
+    <div class="hero__left-fade" aria-hidden="true"></div>
+
+    <!-- Mobile background image (absolutely positioned below text) -->
+    <div class="hero__mobile-bg" aria-hidden="true">
+      <img src="/assets/d829a50779f79d4542032a99c0281297c7ac2838.png" alt="" class="hero__mobile-bg-img" />
+      <div class="hero__mobile-bg-fade"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="hero__inner">
+      <div class="hero__content">
+        <!-- Description group -->
+        <div class="hero__desc-group">
+          <h1 class="hero__h1">From spec to AppExchange.<br />In minutes.</h1>
+          <p class="hero__desc">Appnigma AI generates Apex, LWC, and metadata for a managed package that's structured for Security Review — no AppExchange consultant required.</p>
+          <div class="hero__actions">
+            <button class="hero__btn hero__btn--primary">Book a demo</button>
+            <button class="hero__btn hero__btn--secondary">Learn More</button>
+          </div>
+        </div>
+        <!-- Info row -->
+        <div class="hero__info">
+          <div class="hero__info-row">
+            <div class="hero__avatars">
+              <div class="hero__avatar-wrap">
+                <img src="/assets/ef10b07ee57f3b66d85380bf095ffc6d8e2ac0a0.png" alt="Engineer" />
+              </div>
+              <div class="hero__avatar-wrap">
+                <img src="/assets/39921c6e1a55ece00506afb87e09ce5a1f14650b.png" alt="Engineer" />
+              </div>
+            </div>
+            <div class="hero__info-text">
+              <span class="hero__info-title">Built by ex-Salesforce AppExchange engineers</span>
+              <span class="hero__info-sub">300+ SaaS integrations shipped</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="social-proof">
+    <div class="social-proof__inner">
+      <div class="social-proof__hatch"></div>
+      <div class="social-proof__center">
+        <div class="social-proof__heading">
+          <p>Teams ship <strong>3x faster</strong> to the AppExchange with Appnigma AI</p>
+        </div>
+        <div class="social-proof__logos" id="logoCells">
+          <div class="logo-cell"></div>
+          <div class="logo-cell"></div>
+          <div class="logo-cell"></div>
+          <div class="logo-cell"></div>
+          <div class="logo-cell"></div>
+        </div>
+        <div class="social-proof__spacer"></div>
+      </div>
+      <div class="social-proof__hatch"></div>
+    </div>
+  </section>
+
+  <!-- ===== WHY SALESFORCE ===== -->
+  <section class="why">
+    <div class="why__inner">
+      <div class="why__header">
+        <span class="why__tag">Why Appnigma for Salesforce</span>
+        <h2 class="why__h2">Native by default.<br />Generated by design.</h2>
+      </div>
+      <div class="why__body">
+        <!-- Browser mockup -->
+        <div class="why__visual">
+          <div class="why__browser">
+            <div class="why__browser-chrome">
+              <div class="why__browser-dots">
+                <div class="why__browser-dot why__browser-dot--red"></div>
+                <div class="why__browser-dot why__browser-dot--yellow"></div>
+                <div class="why__browser-dot why__browser-dot--green"></div>
+              </div>
+              <div class="why__browser-address">
+                <img src="/assets/f1273fac836c9e2da49c548d7fd9f3a527091ccd.svg" alt="" width="10" height="10" />
+                <span>Appnigma.ai</span>
+              </div>
+              <div style="width:60px;"></div>
+            </div>
+            <div class="why__browser-content">
+              <div class="why__browser-grid-row">
+                <div class="why__browser-grid-cell"></div>
+                <div class="why__browser-grid-cell"></div>
+                <div class="why__browser-grid-cell"></div>
+              </div>
+              <div class="why__browser-prompt">
+                <div class="why__browser-prompt-icon">
+                  <img src="/assets/8bdadbe32de933dd6e3e52ea04395c3449c2888b.svg" alt="" />
+                </div>
+                <span class="why__browser-prompt-text">Prompt Screenshot</span>
+              </div>
+              <div class="why__browser-grid-row" style="border-bottom:none;">
+                <div class="why__browser-grid-cell"></div>
+                <div class="why__browser-grid-cell"></div>
+                <div class="why__browser-grid-cell"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Feature accordion -->
+        <div class="why__features">
+          <div class="why__feature why__feature--open" id="feature1">
+            <button class="why__feature-btn" aria-expanded="true" aria-controls="feature1-body">
+              <span class="why__feature-title">Days not months</span>
+              <span class="why__feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
+              </span>
+            </button>
+            <div class="why__feature-body" id="feature1-body" role="region">
+              <p class="why__feature-desc">Describe your app in plain English and get a fully scaffolded Salesforce package — objects, flows, Apex classes, Lightning components — in hours, not quarters. No Salesforce architect required.</p>
+            </div>
+          </div>
+          <div class="why__feature" id="feature2">
+            <button class="why__feature-btn" aria-expanded="false" aria-controls="feature2-body">
+              <span class="why__feature-title">You own the package</span>
+              <span class="why__feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
+              </span>
+            </button>
+            <div class="why__feature-body" id="feature2-body" role="region">
+              <p class="why__feature-desc">Every package Appnigma generates is fully owned by you. The code is yours, the namespace is yours, and you can push updates anytime without vendor dependency.</p>
+            </div>
+          </div>
+          <div class="why__feature" id="feature3">
+            <button class="why__feature-btn" aria-expanded="false" aria-controls="feature3-body">
+              <span class="why__feature-title">Security Review embedded</span>
+              <span class="why__feature-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
+              </span>
+            </button>
+            <div class="why__feature-body" id="feature3-body" role="region">
+              <p class="why__feature-desc">Appnigma generates code that passes Salesforce's Security Review first try, 98% of the time. CRUD/FLS checks, hardcoded IDs, dangerous apex — all flagged and fixed automatically before submission.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPARE ===== -->
+  <section class="compare">
+    <div class="compare__inner">
+      <div class="compare__wrap">
+        <div class="compare__header">
+          <div class="compare__tag">Comparison</div>
+          <h2 class="compare__h2">How Appnigma stacks up</h2>
+        </div>
+        <div class="compare__table-wrap">
+          <table class="compare__table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>
+                  <div class="compare__th-logo">
+                    <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" style="height:20px;width:20px;border-radius:4px;" />
+                    Appnigma AI
+                  </div>
+                </th>
+                <th>
+                  <div class="compare__th-logo">
+                    <img src="/assets/8a78f5b5a07ab3a18319e0a602ccf041fe32c461.svg" alt="Salesforce" style="height:18px;width:auto;flex-shrink:0;" />
+                    Consulting
+                  </div>
+                </th>
+                <th>
+                  <div class="compare__th-logo">In-house Dev</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Managed package generation</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+              </tr>
+              <tr>
+                <td>Security Review ready code</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+              </tr>
+              <tr>
+                <td>No Salesforce expertise required</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+              </tr>
+              <tr>
+                <td>Ships in days, not months</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+              </tr>
+              <tr>
+                <td>Zero consulting cost</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+              </tr>
+              <tr>
+                <td>You own the source code</td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+                <td><div class="compare__cell-inner"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg></div></td>
+                <td><div class="compare__cell-inner"><div class="compare__check"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6l2.5 2.5 4.5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIAL ===== -->
+  <section class="testimonial">
+    <div class="testimonial__header-wrap">
+      <div class="testimonial__header">
+        <h2 class="testimonial__h2">Hear from our satisfied clients</h2>
+        <div class="testimonial__nav">
+          <button class="testimonial__nav-btn" aria-label="Previous testimonial">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+          </button>
+          <button class="testimonial__nav-btn" aria-label="Next testimonial">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12l4-4-4-4"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial__card-wrap">
+      <div class="testimonial__card">
+        <div class="testimonial__card-inner">
+          <div class="testimonial__card-content">
+            <div>
+              <img src="/assets/99c36766b0268bc5518ab5033d37db5518a3c1aa.png" alt="Warmly" class="testimonial__company-logo" />
+            </div>
+            <p class="testimonial__quote">"We had zero Salesforce development experience, but still launched a fully functional managed package within a week. The platform made the process incredibly simple — no code, no waiting on engineers. Total game-changer."</p>
+            <div class="testimonial__attribution">
+              <span class="testimonial__name">Max Greenwald</span>
+              <span class="testimonial__role">CEO, Warmly</span>
+            </div>
+          </div>
+          <div class="testimonial__photo">
+            <img src="/assets/a374d130303717255230df1a00963737f45bdc2e.png" alt="Max Greenwald, CEO of Warmly" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats">
+    <div class="stats__inner">
+      <div class="stats__border">
+        <div class="stats__grid">
+          <div class="stats__cell">
+            <span class="stats__value">14 days</span>
+            <span class="stats__label">Median time to first listing</span>
+          </div>
+          <div class="stats__cell">
+            <span class="stats__value">98%</span>
+            <span class="stats__label">First-try Security Review pass</span>
+          </div>
+          <div class="stats__cell">
+            <span class="stats__value">120+</span>
+            <span class="stats__label">Native packages shipped</span>
+          </div>
+          <div class="stats__cell" style="border-right:none;">
+            <span class="stats__value">$0</span>
+            <span class="stats__label">Average consulting spend</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="cta">
+    <div class="cta__inner">
+      <div class="cta__content">
+        <h2 class="cta__h2">Ship your CRM package<br />this quarter.</h2>
+        <div class="cta__actions">
+          <button class="cta__btn cta__btn--primary">Book a demo</button>
+          <button class="cta__btn cta__btn--ghost">Learn More</button>
+        </div>
+      </div>
+      <img src="/assets/02a917af43edb2bb0a9e569cc2a97878d19f93a4.png" alt="" class="cta__sphere" aria-hidden="true" />
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="footer__brand-logo">
+            <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" />
+            <span>Appnigma AI</span>
+          </div>
+          <p class="footer__brand-desc">Ship native CRM packages in days, not months. No Salesforce architects, no consulting bills.</p>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <div class="footer__col-title">Platform</div>
+            <div class="footer__col-links">
+              <a href="/salesforce.html" class="footer__col-link">Salesforce</a>
+              <a href="#" class="footer__col-link">HubSpot</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Customers</div>
+            <div class="footer__col-links">
+              <a href="#" class="footer__col-link">Case Studies</a>
+              <a href="#" class="footer__col-link">Testimonials</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Resources</div>
+            <div class="footer__col-links">
+              <a href="#" class="footer__col-link">Documentation</a>
+              <a href="#" class="footer__col-link">Blog</a>
+              <a href="#" class="footer__col-link">Changelog</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Company</div>
+            <div class="footer__col-links">
+              <a href="#" class="footer__col-link">About</a>
+              <a href="#" class="footer__col-link">Careers</a>
+              <a href="#" class="footer__col-link">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">© 2026 Appnigma AI. All rights reserved.</span>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__bottom-link">Privacy Policy</a>
+          <a href="#" class="footer__bottom-link">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== LOGO ANIMATION =====
+    (function () {
+      var logos = [
+        '/assets/46f47ea6c18798b9e9e0e99c1ece6931a1151123.svg',
+        '/assets/563b12dafdefe80c2bee0277124c24206230a6d9.svg',
+        '/assets/8b04729df1306f229d762d1603659070008a3730.svg',
+        '/assets/c52285970f7f1ca9daeeb6f2c2f4c87c51529303.svg',
+        '/assets/1d3f028314f5e7aead2d462d5b1eca9f51a542c8.svg'
+      ];
+      var cells = document.querySelectorAll('#logoCells .logo-cell');
+      cells.forEach(function (cell, i) {
+        logos.forEach(function (src) {
+          var img = document.createElement('img');
+          img.src = src; img.alt = '';
+          cell.appendChild(img);
+        });
+        var imgs = cell.querySelectorAll('img');
+        var current = i % logos.length;
+        imgs[current].classList.add('is-active');
+        var duration = 2600 + i * 650;
+        setInterval(function () {
+          var prev = imgs[current];
+          current = (current + 1) % logos.length;
+          var next = imgs[current];
+          prev.classList.remove('is-active');
+          prev.classList.add('is-exit');
+          next.classList.add('is-active');
+          setTimeout(function () { prev.classList.remove('is-exit'); }, 600);
+        }, duration);
+      });
+    })();
+
+    // ===== DESKTOP MEGA MENUS =====
+    (function () {
+      var panels = {
+        platform:  { panel: document.getElementById('megaPlatform'),  btn: document.getElementById('dPlatformBtn'),  chev: document.getElementById('dPlatformChevron') },
+        resources: { panel: document.getElementById('megaResources'), btn: document.getElementById('dResourcesBtn'), chev: document.getElementById('dResourcesChevron') }
+      };
+
+      function closeAll() {
+        Object.values(panels).forEach(function (d) {
+          if (!d.panel) return;
+          d.panel.hidden = true;
+          if (d.btn) d.btn.setAttribute('aria-expanded', 'false');
+          if (d.btn) d.btn.classList.remove('hdr-nav-btn--active');
+          if (d.chev) d.chev.classList.remove('hdr-chevron--up');
+        });
+      }
+
+      function toggle(key, e) {
+        e.stopPropagation();
+        var d = panels[key];
+        var isOpen = !d.panel.hidden;
+        closeAll();
+        if (!isOpen) {
+          d.panel.hidden = false;
+          d.btn.setAttribute('aria-expanded', 'true');
+          d.btn.classList.add('hdr-nav-btn--active');
+          d.chev.classList.add('hdr-chevron--up');
+        }
+      }
+
+      if (panels.platform.btn)  panels.platform.btn.addEventListener('click',  function(e){ toggle('platform', e); });
+      if (panels.resources.btn) panels.resources.btn.addEventListener('click', function(e){ toggle('resources', e); });
+
+      document.addEventListener('click', closeAll);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+
+      // ===== MOBILE OVERLAY =====
+      var overlay  = document.getElementById('mobileOverlay');
+      var openBtn  = document.getElementById('mobileMenuBtn');
+      var closeBtn = document.getElementById('mobileCloseBtn');
+      function openMobile() { overlay.hidden = false; document.body.style.overflow = 'hidden'; if (openBtn) openBtn.setAttribute('aria-expanded', 'true'); }
+      function closeMobile() {
+        overlay.hidden = true; document.body.style.overflow = ''; if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+        closeAccordion('mPlatform', 'mPlatformBody', 'mPlatformBtn');
+        closeAccordion('mResources', 'mResourcesBody', 'mResourcesBtn');
+      }
+      if (openBtn)  openBtn.addEventListener('click', openMobile);
+      if (closeBtn) closeBtn.addEventListener('click', closeMobile);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay && !overlay.hidden) closeMobile(); });
+
+      // ===== MOBILE ACCORDIONS =====
+      function openAccordion(wrapId, bodyId, btnId) {
+        var wrap = document.getElementById(wrapId), body = document.getElementById(bodyId), btn = document.getElementById(btnId);
+        if (!wrap || !body || !btn) return;
+        wrap.classList.add('hdr-mobile-accord--open'); body.hidden = false; btn.setAttribute('aria-expanded', 'true');
+      }
+      function closeAccordion(wrapId, bodyId, btnId) {
+        var wrap = document.getElementById(wrapId), body = document.getElementById(bodyId), btn = document.getElementById(btnId);
+        if (!wrap || !body || !btn) return;
+        wrap.classList.remove('hdr-mobile-accord--open'); body.hidden = true; btn.setAttribute('aria-expanded', 'false');
+      }
+      function initMobileAccordion(wrapId, bodyId, btnId) {
+        var btn = document.getElementById(btnId);
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var isOpen = document.getElementById(wrapId).classList.contains('hdr-mobile-accord--open');
+          if (isOpen) closeAccordion(wrapId, bodyId, btnId); else openAccordion(wrapId, bodyId, btnId);
+        });
+      }
+      initMobileAccordion('mPlatform', 'mPlatformBody', 'mPlatformBtn');
+      initMobileAccordion('mResources', 'mResourcesBody', 'mResourcesBtn');
+    })();
+
+    // ===== FEATURE ACCORDION =====
+    (function () {
+      var features = document.querySelectorAll('.why__feature');
+      features.forEach(function (feature) {
+        var btn = feature.querySelector('.why__feature-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var isOpen = feature.classList.contains('why__feature--open');
+          features.forEach(function (f) {
+            f.classList.remove('why__feature--open');
+            var b = f.querySelector('.why__feature-btn');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            feature.classList.add('why__feature--open');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

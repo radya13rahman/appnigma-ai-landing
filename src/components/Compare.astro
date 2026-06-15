@@ -1,5 +1,11 @@
 ---
 ---
+<style>
+  .compare-table-wrap table th:first-child,
+  .compare-table-wrap table td:first-child { border-left: none; }
+  .compare-table-wrap table th:last-child,
+  .compare-table-wrap table td:last-child { border-right: none; }
+</style>
 <section class="bg-white border-b border-[#e5e5e5] px-section" style="padding-left:120px;padding-right:120px;">
   <div class="border-l border-r border-[#ebebeb] py-20 flex flex-col gap-12">
     <!-- Heading -->
@@ -85,7 +91,7 @@
 
     <!-- Comparison Table -->
     <div class="px-0 compare-table-wrap">
-      <table class="w-full border-collapse border border-[#e5e5e5]" style="table-layout:fixed;">
+      <table class="w-full border-collapse" style="table-layout:fixed;">
         <thead>
           <tr>
             <th class="text-left p-4 font-body font-normal text-[14px] text-[#525252] border border-[#e5e5e5] bg-white" style="width:25%;">Capability</th>
@@ -109,64 +115,76 @@
         </thead>
         <tbody>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><path d="M10 2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-              Native managed package
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="4" y="2" width="8" height="12" rx="1"/></svg>
+                Native managed package
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">partial</td>
           </tr>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1z"/></svg>
-              Security Review ready
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><circle cx="8" cy="8" r="6"/></svg>
+                Security Review ready
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">partial</td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
           </tr>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><circle cx="8" cy="8" r="6"/></svg>
-              AppExchange listing
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><circle cx="8" cy="8" r="5"/><circle cx="8" cy="8" r="2"/></svg>
+                AppExchange listing
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
           </tr>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><path d="M8 0L6 6H0l5 4-2 6 5-4 5 4-2-6 5-4h-6z"/></svg>
-              Days, not months
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,12 3.5,15 5,9.5 1,6 6,6"/></svg>
+                Days, not months
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
           </tr>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><path d="M10 2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-              You own the IP
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="3" y="3" width="10" height="10" rx="1"/></svg>
+                You own the IP
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
           </tr>
           <tr>
-            <td class="p-4 border border-[#e5e5e5] font-body text-[14px] text-[#0a0a0a] flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#737373"><rect x="2" y="4" width="12" height="8" rx="1"/><path d="M5 4V3a3 3 0 0 1 6 0v1"/></svg>
-              No service contract
+            <td class="p-4 border border-[#e5e5e5]">
+              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="2" y="6" width="12" height="8" rx="1"/><path d="M5 6V4a3 3 0 0 1 6 0v2"/></svg>
+                No service contract
+              </div>
             </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
             <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
+            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
           </tr>
         </tbody>
       </table>
