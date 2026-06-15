@@ -68,19 +68,19 @@ details[open] .faq-icon { transform: rotate(45deg); }
 .check-circle svg { color: white; }
 
 /* Mobile/desktop visibility helpers */
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   .desktop-only { display: none !important; }
   .mobile-show { display: flex !important; }
 }
 
 /* Salesforce card: full-width bottom "See Details" is mobile-only */
 .sf-see-details-bottom { display: none; }
-@media (min-width: 769px) {
+@media (min-width: 1200px) {
   .mobile-show { display: none !important; }
 }
 
 /* ===== Mobile responsive overrides ===== */
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   /* ---------- Global gutters: 120px -> 20px ---------- */
   header > div,
   .px-section {
