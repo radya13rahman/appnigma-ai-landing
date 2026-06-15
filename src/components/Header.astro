@@ -3,6 +3,7 @@
 <div class="hdr-sticky">
   <header class="hdr-bar">
     <div class="hdr-inner">
+     <div class="hdr-row">
       <div class="hdr-left">
         <a href="/" class="hdr-brand">
           <img src="/assets/d4fa65061f8d343fe1b5f7058e5c694dca4a764b.png" alt="Appnigma AI" class="hdr-logo" />
@@ -28,6 +29,7 @@
       <button class="hdr-hamburger" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileOverlay">
         <img src="/assets/5133102a7b8e9471deb07b0797ea635456bd33c5.svg" alt="" class="w-6 h-6" />
       </button>
+     </div>
     </div>
   </header>
 
@@ -35,7 +37,7 @@
   <div class="hdr-mega" id="megaPlatform" role="menu" hidden>
     <div class="hdr-mega-inner">
       <div class="hdr-mega-items">
-        <a href="/salesforce.html" class="hdr-mega-item" role="menuitem">
+        <a href="/salesforce" class="hdr-mega-item" role="menuitem">
           <div class="hdr-drop-thumb">
             <div class="hdr-drop-thumb-inner">
               <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
@@ -134,7 +136,7 @@
       </button>
       <div class="hdr-mobile-accord-body" id="mPlatformBody" hidden>
         <div class="hdr-mobile-drop">
-          <a href="/salesforce.html" class="hdr-mobile-drop-item">
+          <a href="/salesforce" class="hdr-mobile-drop-item">
             <div class="hdr-mobile-drop-thumb">
               <div class="hdr-drop-thumb-inner" style="width:64px;height:64px;">
                 <img src="/assets/d538364c1e05c315b6e65dfd46698c1bea5bd213.png" class="hdr-drop-thumb-img hdr-drop-thumb-img--sf" alt="Salesforce" />
@@ -228,12 +230,8 @@
   .hdr-drop-thumb {
     width: 64px;
     height: 64px;
-    border: 1px solid #e5e5e5;
+    border: 0.5px solid #e5e5e5;
     background-color: #fafafa;
-    background-image:
-      linear-gradient(#e5e5e5 1px, transparent 1px),
-      linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
-    background-size: 8px 8px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -258,10 +256,6 @@
   .hdr-drop-thumb-img--hs { left: -141.25px; top: -68.25px; }
   .hdr-drop-thumb--icon {
     background-color: #fafafa;
-    background-image:
-      linear-gradient(#e5e5e5 1px, transparent 1px),
-      linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
-    background-size: 8px 8px;
   }
   .hdr-drop-text { display: flex; flex-direction: column; gap: 2px; }
   .hdr-drop-title {
@@ -274,8 +268,8 @@
   .hdr-drop-desc {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    color: #737373;
+    font-size: 16px;
+    color: #525252;
     line-height: 1.5;
     white-space: nowrap;
   }
@@ -291,16 +285,31 @@
   }
 
   /* ===== HEADER BAR ===== */
-  .hdr-bar { border-bottom: 1px solid #e5e5e5; }
+  .hdr-bar { background: #fff; border-bottom: 1px solid #e5e5e5; }
   .hdr-inner {
     max-width: 1440px;
     margin: 0 auto;
+    padding: 0 120px;
+  }
+  .hdr-row {
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 120px;
+    padding: 0 24px;
+    border: 1px solid transparent;
+    background: #fff;
   }
+  /* When a dropdown is open: show the bordered container box, hide the
+     full-width bottom rule so the box reads as one continuous outline,
+     and reveal the diagonal hatch in the left/right gutters. */
+  .hdr-sticky--open .hdr-bar {
+    border-bottom: none;
+    background-color: #fafafa;
+    background-image: repeating-linear-gradient(-45deg, #e5e5e5 0, #e5e5e5 1px, transparent 1px, transparent 8px);
+    background-attachment: fixed;
+  }
+  .hdr-sticky--open .hdr-row { border-color: #e5e5e5; }
   .hdr-left { display: flex; align-items: center; gap: 32px; }
   .hdr-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
   .hdr-logo { width: 24px; height: 24px; border-radius: 4.5px; object-fit: contain; }
@@ -312,13 +321,13 @@
     letter-spacing: -0.02em;
     white-space: nowrap;
   }
-  .hdr-desktop-nav { display: flex; align-items: center; gap: 24px; }
+  .hdr-desktop-nav { display: flex; align-items: center; gap: 32px; }
   .hdr-cta { display: flex; align-items: center; gap: 12px; }
   .hdr-btn-ghost {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 14px;
-    color: #202b30;
+    color: #1d2b31;
     background: none;
     border: none;
     cursor: pointer;
@@ -333,9 +342,9 @@
     font-weight: 500;
     font-size: 14px;
     color: #fff;
-    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #2a83fc;
+    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #0085FF;
     border: 1px solid #fff;
-    box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc;
+    box-shadow: 0px 1px 2px rgba(28,63,173,0.48), 0px 0px 0px 1px #0085FF;
     cursor: pointer;
     padding: 0 12px;
     height: 32px;
@@ -384,7 +393,7 @@
   .hdr-nav-btn:hover { color: #0a0a0a; }
   .hdr-nav-btn--active {
     color: #0a0a0a;
-    border-bottom: 2px solid #2a83fc;
+    border-bottom: 2px solid #0085FF;
     padding-bottom: 2px;
   }
   .hdr-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; }
@@ -396,44 +405,32 @@
     left: 0;
     right: 0;
     top: 100%;
-    /* diagonal stripe pattern across the full width */
-    background-color: #f5f5f5;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      #e0e0e0 0, #e0e0e0 1px,
-      transparent 0, transparent 50%
-    );
-    background-size: 10px 10px;
+    background-color: #fafafa;
+    background-image: repeating-linear-gradient(-45deg, #e5e5e5 0, #e5e5e5 1px, transparent 1px, transparent 8px);
+    background-attachment: fixed;
     border-bottom: 1px solid #e5e5e5;
     z-index: 200;
     animation: megaFadeIn 0.15s ease;
   }
   @keyframes megaFadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
   .hdr-mega[hidden] { display: none; }
   .hdr-mega-inner {
     max-width: 1440px;
     margin: 0 auto;
+    padding: 0 120px;
+  }
+  .hdr-mega-items {
     display: flex;
-    align-items: stretch;
-  }
-  /* Left and right diagonal flanks */
-  .hdr-mega-flank {
-    width: 120px;
-    flex-shrink: 0;
-    /* transparent — shows through to the parent diagonal pattern */
-  }
-  /* White content zone in the middle */
-  .hdr-mega-content {
-    flex: 1;
-    background: #fff;
-    border-left: 1px solid #e5e5e5;
-    border-right: 1px solid #e5e5e5;
+    flex-direction: column;
+    gap: 16px;
     padding: 24px;
+    border: 1px solid #e5e5e5;
+    border-top: none;
+    background: #fff;
   }
-  .hdr-mega-items { display: flex; flex-direction: column; gap: 16px; }
   .hdr-mega-item {
     display: flex;
     align-items: center;
@@ -505,7 +502,7 @@
     font-size: 14px;
     color: #525252;
   }
-  .hdr-mobile-accord--open .hdr-mobile-accord-btn { border-bottom: 2px solid #2a83fc; padding-bottom: 10px; }
+  .hdr-mobile-accord--open .hdr-mobile-accord-btn { border-bottom: 2px solid #0085FF; padding-bottom: 10px; }
   .hdr-mobile-accord--open .hdr-mobile-link-text { color: #0a0a0a; }
   .hdr-mobile-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; flex-shrink: 0; }
   .hdr-mobile-accord--open .hdr-mobile-chevron { transform: rotate(180deg); }
@@ -559,9 +556,9 @@
     color: #202b30;
   }
   .hdr-mobile-btn--primary {
-    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #2a83fc;
+    background: linear-gradient(rgba(255,255,255,0.12) 0%, rgba(255,255,255,0) 100%), #0085FF;
     border: 1px solid #fff;
-    box-shadow: 0px 1px 2px rgba(37,62,167,0.48), 0px 0px 0px 1px #2a83fc;
+    box-shadow: 0px 1px 2px rgba(28,63,173,0.48), 0px 0px 0px 1px #0085FF;
     color: #fff;
   }
 
@@ -581,6 +578,7 @@
 <script>
 (function () {
   /* ===== DESKTOP MEGA MENUS ===== */
+  var sticky = document.querySelector('.hdr-sticky');
   var panels = {
     platform:  { panel: document.getElementById('megaPlatform'),  btn: document.getElementById('dPlatformBtn'),  chev: document.getElementById('dPlatformChevron') },
     resources: { panel: document.getElementById('megaResources'), btn: document.getElementById('dResourcesBtn'), chev: document.getElementById('dResourcesChevron') }
@@ -593,6 +591,7 @@
       if (d.btn) { d.btn.setAttribute('aria-expanded', 'false'); d.btn.classList.remove('hdr-nav-btn--active'); }
       if (d.chev) d.chev.classList.remove('hdr-chevron--up');
     });
+    if (sticky) sticky.classList.remove('hdr-sticky--open');
   }
 
   function toggle(key, e) {
@@ -605,6 +604,7 @@
       d.btn.setAttribute('aria-expanded', 'true');
       d.btn.classList.add('hdr-nav-btn--active');
       d.chev.classList.add('hdr-chevron--up');
+      if (sticky) sticky.classList.add('hdr-sticky--open');
     }
   }
 

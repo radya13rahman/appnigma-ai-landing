@@ -1,26 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import SocialProof from '../components/SocialProof.astro';
+import Testimonial from '../components/Testimonial.astro';
+import Stats from '../components/Stats.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Compare from '../components/Compare.astro';
 import Footer from '../components/Footer.astro';
 ---
 <Layout title="Salesforce Native Managed Packages — Appnigma AI">
   <Header />
 
   <!-- Hero -->
-  <section class="relative bg-white overflow-hidden" style="min-height:836px;">
+  <section class="hero-section relative bg-white overflow-hidden" style="min-height:836px;">
     <div class="absolute inset-0 pointer-events-none">
-      <img src="/assets/9c92c14de9348a125c01b7a1e53923e2f9efeaab.png" alt="" class="absolute inset-0 w-full h-full object-cover object-bottom" fetchpriority="high" />
-      <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(255,255,255,1) 14%,rgba(255,255,255,0) 24.28%),linear-gradient(rgba(255,255,255,0) 51.92%,rgba(255,255,255,1) 94.71%)"></div>
+      <img src="/assets/75195996e7c99093b024e02f4d0267a71c585ef6.png" alt="" class="hero-bg-img absolute inset-0 w-full h-full object-cover object-bottom" fetchpriority="high" />
+      <div class="hero-bg-overlay absolute inset-0" style="background:linear-gradient(180deg,rgba(255,255,255,1) 14%,rgba(255,255,255,0) 24.28%),linear-gradient(rgba(255,255,255,0) 51.92%,rgba(255,255,255,1) 94.71%)"></div>
     </div>
-    <div class="absolute left-0 top-0 h-full pointer-events-none" style="width:893px;background:linear-gradient(to right,white 65.38%,transparent 100%);"></div>
-    <div class="relative max-w-[1440px] mx-auto flex items-center" style="padding-left:120px;padding-right:120px;min-height:836px;padding-top:143px;padding-bottom:80px;">
-      <div class="flex flex-col gap-16" style="width:591px;">
+    <div class="hero-left-gradient absolute left-0 top-0 h-full pointer-events-none" style="width:893px;background:linear-gradient(to right,white 65.38%,transparent 100%);"></div>
+    <div class="hero-content px-section relative max-w-[1440px] mx-auto flex items-center" style="padding-left:120px;padding-right:120px;min-height:836px;padding-top:143px;padding-bottom:80px;">
+      <div class="flex flex-col gap-16 w-[591px] max-w-full">
         <div class="flex flex-col gap-6">
-          <h1 class="font-heading font-medium text-[#0a0a0a] leading-[1.1]" style="font-size:64px;letter-spacing:-1.2px;">
-            Launch Native Salesforce Managed Packages in Days,
+          <h1 class="hero-h1 font-heading font-medium text-[#0a0a0a] leading-[1.1]" style="font-size:64px;letter-spacing:-1.2px;">
+            From spec to<br />AppExchange.<br />In minutes.
           </h1>
           <p class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]" style="max-width:591px;">
-            AI generates the package. You ship to AppExchange — no AppExchange consultant required.
+            Appnigma AI generates Apex, LWC, and metadata for a managed package that's structured for Security Review — no AppExchange consultant required.
           </p>
           <div class="flex items-center gap-2">
             <button class="btn-primary font-body font-medium text-[14px] text-white px-3 h-9 rounded-[8px] whitespace-nowrap" style="letter-spacing:-0.14px;">Book a demo</button>
@@ -50,358 +55,309 @@ import Footer from '../components/Footer.astro';
   </section>
 
   <!-- Social Proof Logo Band -->
-  <section class="bg-white border-y border-[#e5e5e5]" style="padding-left:120px;padding-right:120px;">
-    <div class="border-l border-r border-[#e5e5e5] py-10 flex flex-col items-center gap-10">
-      <p class="font-heading font-medium text-[24px] text-[#0a0a0a] text-center" style="letter-spacing:-0.04px;">
-        Teams ship 3x faster to the AppExchange with Appnigma AI
-      </p>
-      <div class="flex items-center justify-between w-full border border-[#e5e5e5]">
-        <div class="flex flex-1 items-center justify-center py-10 border-r border-dashed border-[#e5e5e5]">
-          <img src="/assets/c52285970f7f1ca9daeeb6f2c2f4c87c51529303.svg" alt="Logo" class="h-8 opacity-60 grayscale" />
-        </div>
-        <div class="flex flex-1 items-center justify-center py-10 border-r border-dashed border-[#e5e5e5]">
-          <img src="/assets/f1273fac836c9e2da49c548d7fd9f3a527091ccd.svg" alt="Logo" class="h-8 opacity-60 grayscale" />
-        </div>
-        <div class="flex flex-1 items-center justify-center py-10 border-r border-dashed border-[#e5e5e5]">
-          <img src="/assets/563b12dafdefe80c2bee0277124c24206230a6d9.svg" alt="Logo" class="h-8 opacity-60 grayscale" />
-        </div>
-        <div class="flex flex-1 items-center justify-center py-10 border-r border-dashed border-[#e5e5e5]">
-          <img src="/assets/5041776b6f80ee7654b666512c90c5c8e114c935.svg" alt="Logo" class="h-8 opacity-60 grayscale" />
-        </div>
-        <div class="flex flex-1 items-center justify-center py-10">
-          <img src="/assets/1d3f028314f5e7aead2d462d5b1eca9f51a542c8.svg" alt="Logo" class="h-8 opacity-60 grayscale" />
-        </div>
-      </div>
-    </div>
-  </section>
+  <SocialProof />
 
   <!-- Why Appnigma for Salesforce (dark) -->
-  <section class="bg-[#151515]" style="padding-left:120px;padding-right:120px;">
-    <div class="border-l border-r border-[#3d3d3d] py-20 flex flex-row items-start gap-0" style="min-height:740px;">
+  <section class="sf-why-section bg-[#151515] px-section relative mx-auto max-w-[1440px] flex-shrink-0 flex flex-col items-start gap-[8px]" style="padding-left:120px;padding-right:120px;height:740px;box-sizing:border-box;">
+    <div class="sf-why-row border-l border-r border-[#3d3d3d] flex flex-row items-start gap-0" style="width:1200px;height:740px;padding:80px 0px;box-sizing:border-box;background:#151515;">
       <!-- Left: text + features -->
-      <div class="flex flex-col border-t border-b border-[#3d3d3d]" style="width:600px;min-height:580px;">
+      <div class="sf-why-left flex flex-col border-t border-b border-[#3d3d3d] flex-shrink-0" style="width:600px;height:580px;box-sizing:border-box;">
         <!-- Heading block -->
-        <div class="flex flex-col gap-4 p-6" style="flex:1;">
-          <div class="inline-flex items-center px-3 py-2 border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.05)]">
-            <span class="font-body font-normal text-[12px] text-[rgba(255,255,255,0.5)] leading-[1.5]">Why Appnigma for Salesforce</span>
+        <div class="flex flex-col gap-[16px] p-[24px] flex-shrink-0" style="width:600px;height:302px;box-sizing:border-box;">
+          <div class="flex flex-row justify-center items-center gap-[8px] bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.05)] rounded-none" style="width:203px;height:34px;flex:none;order:0;flex-grow:0;box-sizing:border-box;">
+            <span class="font-body font-normal text-[12px] text-[rgba(255,255,255,0.5)] leading-[1.5]" style="font-family:'Montserrat', sans-serif;">Why Appnigma for Salesforce</span>
           </div>
-          <h2 class="font-heading font-medium text-white leading-[1.1]" style="font-size:32px;letter-spacing:-1.2px;">Native by default.<br />Generated by design.</h2>
-          <p class="font-body font-normal text-[16px] text-[rgba(255,255,255,0.5)] leading-[1.5]">
-            The same artifacts a senior Salesforce engineer would write by hand — Apex, LWC, metadata, test classes — only faster, cheaper, and reproducible.
-          </p>
+          <div class="flex flex-row items-start p-0 gap-[8px]" style="width:552px;height:70px;flex:none;order:1;align-self:stretch;flex-grow:0;box-sizing:border-box;">
+            <h2 class="font-heading font-medium text-white text-[32px] leading-[110%] flex-grow" style="font-family:'Space Grotesk', sans-serif; letter-spacing:-1.2px;">Native by default.<br />Generated by design.</h2>
+          </div>
+          <div class="flex flex-row items-center p-0 gap-[8px]" style="width:552px;height:72px;flex:none;order:2;align-self:stretch;flex-grow:0;box-sizing:border-box;">
+            <p class="font-body font-normal text-[16px] text-[rgba(255,255,255,0.5)] leading-[150%] flex-grow" style="width:552px;height:72px;font-family:'Montserrat', sans-serif;">
+              One workflow that replaces a six-month consulting engagement.
+            </p>
+          </div>
         </div>
+
         <!-- Feature: Days, not months -->
-        <div class="flex items-start gap-4 p-6 border-t border-[#3d3d3d] bg-[#262626]" style="min-height:118px;">
-          <div class="flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="white"><path d="M9 1L3 9h5l-1 6 6-8H8l1-6z"/></svg>
+        <div class="sf-feature-btn flex items-start gap-[16px] p-[24px] border-t border-b border-[#3D3D3D] cursor-pointer transition-all duration-300" data-index="0" style="width:600px;height:118px;background-color:#262626;flex:none;order:1;align-self:stretch;flex-grow:0;box-sizing:border-box;">
+          <div class="sf-feature-icon-box flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300">
+            <svg class="sf-feature-icon text-white transition-colors duration-300" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M9 1L3 9h5l-1 6 6-8H8l1-6z"/></svg>
           </div>
-          <div class="flex flex-col gap-2">
-            <span class="font-body font-semibold text-[16px] text-white leading-[1.1]">Days, not months</span>
-            <p class="font-body font-normal text-[14px] text-[rgba(255,255,255,0.5)] leading-[1.5]">Describe the package — objects, flows, Lightning components — and get a same-managed package, fraction of the time.</p>
+          <div class="sf-feature-text-wrap flex flex-col gap-[10px] flex-grow" style="width:504px;height:70px;box-sizing:border-box;">
+            <span class="font-body font-semibold text-[16px] text-white leading-[110%] h-[18px]" style="font-family:'Montserrat', sans-serif;">Days, not months</span>
+            <div class="sf-feature-desc transition-all duration-300 overflow-hidden" style="max-height: 42px; opacity: 1;">
+              <p class="font-body font-normal text-[14px] text-[rgba(255,255,255,0.5)] leading-[150%] w-[504px] h-[42px] mt-1" style="font-family:'Montserrat', sans-serif;">Describe the package — objects, flows, Lightning components.</p>
+            </div>
           </div>
         </div>
+
         <!-- Feature: You own the package -->
-        <div class="flex items-center gap-4 p-6 border-t border-[#3d3d3d]">
-          <div class="flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(255,255,255,0.2)"><path d="M2 4l6-3 6 3v4c0 3-6 6-6 6S2 11 2 8V4z"/></svg>
+        <div class="sf-feature-btn flex items-start gap-[16px] p-[24px] border-b border-[#3D3D3D] cursor-pointer transition-all duration-300" data-index="1" style="width:600px;height:80px;background-color:#151515;flex:none;order:2;align-self:stretch;flex-grow:0;box-sizing:border-box;">
+          <div class="sf-feature-icon-box flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300">
+            <svg class="sf-feature-icon text-[rgba(255,255,255,0.2)] transition-colors duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
           </div>
-          <span class="font-body font-semibold text-[16px] text-white leading-[1.1]">You own the package</span>
+          <div class="sf-feature-text-wrap flex flex-col gap-[10px] flex-grow" style="width:504px;height:18px;box-sizing:border-box;">
+            <span class="font-body font-semibold text-[16px] text-white leading-[110%] h-[18px]" style="font-family:'Montserrat', sans-serif;">You own the package</span>
+            <div class="sf-feature-desc transition-all duration-300 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <p class="font-body font-normal text-[14px] text-[rgba(255,255,255,0.5)] leading-[150%] w-[504px] h-[42px] mt-1" style="font-family:'Montserrat', sans-serif;">Generated Apex, LWC, and metadata are yours. No namespace lock-in, no service contract, no perpetual retainer.</p>
+            </div>
+          </div>
         </div>
+
         <!-- Feature: Security Review, embedded -->
-        <div class="flex items-center gap-4 p-6 border-t border-[#3d3d3d]">
-          <div class="flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(255,255,255,0.2)"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
+        <div class="sf-feature-btn flex items-start gap-[16px] p-[24px] cursor-pointer transition-all duration-300" data-index="2" style="width:600px;height:80px;background-color:#151515;flex:none;order:3;align-self:stretch;flex-grow:0;box-sizing:border-box;">
+          <div class="sf-feature-icon-box flex-shrink-0 w-8 h-8 border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] flex items-center justify-center transition-all duration-300">
+            <svg class="sf-feature-icon text-[rgba(255,255,255,0.2)] transition-colors duration-300" width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg>
           </div>
-          <span class="font-body font-semibold text-[16px] text-white leading-[1.1]">Security Review, embedded</span>
+          <div class="sf-feature-text-wrap flex flex-col gap-[10px] flex-grow" style="width:504px;height:18px;box-sizing:border-box;">
+            <span class="font-body font-semibold text-[16px] text-white leading-[110%] h-[18px]" style="font-family:'Montserrat', sans-serif;">Security Review, embedded</span>
+            <div class="sf-feature-desc transition-all duration-300 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <p class="font-body font-normal text-[14px] text-[rgba(255,255,255,0.5)] leading-[150%] w-[504px] h-[42px] mt-1" style="font-family:'Montserrat', sans-serif;">AppExchange best practices baked into every artifact — 0 PMD violations, ApexGuru-checked, 90%+ test coverage.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Right: mock UI cards -->
-      <div class="relative flex-shrink-0" style="width:600px;height:580px;">
-        <div class="absolute inset-0 bg-[#1b1b1b] border border-[#333]"></div>
-        <div class="absolute flex flex-col gap-12" style="width:400px;left:100px;top:90px;">
-          <!-- Mock window 1: Prompt Screenshot -->
-          <div class="bg-[#262626] rounded-[9px] overflow-hidden shadow-lg">
-            <div class="flex items-center justify-between px-3 py-2 border-b border-[#3d3d3d]">
-              <div class="flex items-center gap-1.5">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FF6257]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FDBC23]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#11CA3E]"></div>
-              </div>
-              <span class="font-mono text-[9px] text-[#7d7d7d]">Appnigma.ai</span>
-              <div class="w-6"></div>
-            </div>
-            <div class="bg-[#262626] flex flex-col items-center justify-center gap-3 py-8 border-t border-dashed border-[#3d3d3d]">
-              <div class="w-6 h-6 bg-white rounded-[6px] flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="#4d4d4d"><path d="M1 2h10v8H1z" rx="1"/><path d="M3 5h6M3 7h4"/></svg>
-              </div>
-              <span class="font-body font-medium text-[12px] text-white text-center">Prompt Screenshot</span>
-            </div>
-          </div>
-          <!-- Mock window 2: CRM Screenshot -->
-          <div class="bg-[#262626] rounded-[9px] overflow-hidden shadow-lg">
-            <div class="flex items-center justify-between px-3 py-2 border-b border-[#3d3d3d]">
-              <div class="flex items-center gap-1.5">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FF6257]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FDBC23]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#11CA3E]"></div>
-              </div>
-              <span class="font-mono text-[9px] text-[#7d7d7d]">Appnigma.ai</span>
-              <div class="w-6"></div>
-            </div>
-            <div class="bg-[#262626] flex flex-col items-center justify-center gap-3 py-8 border-t border-dashed border-[#3d3d3d]">
-              <div class="w-6 h-6 bg-white rounded-[6px] flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="#4d4d4d"><circle cx="6" cy="5" r="3"/><path d="M1 11a5 5 0 0 1 10 0"/></svg>
-              </div>
-              <span class="font-body font-medium text-[12px] text-white text-center">CRM Screenshot</span>
-            </div>
-          </div>
-          <!-- Mock window 3: AppExchange Screenshot -->
-          <div class="bg-[#262626] rounded-[9px] overflow-hidden shadow-lg">
-            <div class="flex items-center justify-between px-3 py-2 border-b border-[#3d3d3d]">
-              <div class="flex items-center gap-1.5">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FF6257]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#FDBC23]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#11CA3E]"></div>
-              </div>
-              <span class="font-mono text-[9px] text-[#7d7d7d]">Appnigma.ai</span>
-              <div class="w-6"></div>
-            </div>
-            <div class="bg-[#262626] flex flex-col items-center justify-center gap-3 py-8 border-t border-dashed border-[#3d3d3d]">
-              <div class="w-6 h-6 bg-white rounded-[6px] flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="#4d4d4d"><path d="M6 1l1.5 3h3.5l-3 2 1.5 3.5L6 8l-3.5 1.5 1.5-3.5-3-2h3.5z"/></svg>
-              </div>
-              <span class="font-body font-medium text-[12px] text-white text-center">AppExchange Screenshot</span>
-            </div>
-          </div>
+      <!-- Right: mock UI viewport -->
+      <div class="sf-why-right sf-why-right-viewport relative flex-shrink-0 flex flex-col items-center justify-start overflow-hidden" style="width:600px;height:580px;background:#1B1B1B;border:1px solid #333333;box-sizing:border-box;">
+        <!-- Background hatch pattern -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute inset-0 sf-hatch-pattern"></div>
         </div>
-      </div>
+
+        <!-- Vertical Sliding Container -->
+        <div class="sf-why-mock-track relative flex flex-col items-center gap-40 w-[400px] max-w-full transition-transform duration-500 ease-in-out">
+          <!-- Mac Mockup Window 1: Prompt Screenshot -->
+          <div class="sf-mockup-window relative w-[400px] max-w-full bg-[#262626] rounded-[9.30233px] overflow-hidden shadow-2xl flex flex-col flex-shrink-0 transition-opacity duration-300">
+            <!-- Mac Window Header -->
+            <div class="flex flex-row justify-between items-center bg-[#1a1a1a] flex-shrink-0" style="width:400px;height:27.91px;padding:9.30233px 0px;z-index:1;box-sizing:border-box;">
+              <!-- Traffic lights container -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;padding-left:9.30233px;box-sizing:border-box;">
+                <div class="rounded-full bg-[#FF6257]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#FDBC23]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#11CA3E]" style="width:6.2px;height:6.2px;"></div>
+              </div>
+              <!-- Domain Title Container -->
+              <div class="flex flex-row justify-center items-end gap-[3.1px] flex-grow" style="width:303.88px;height:12px;box-sizing:border-box;">
+                <svg width="9.3" height="9.3" viewBox="0 0 24 24" fill="none" stroke="#7D7D7D" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="font-mono font-normal text-[9.30233px] leading-[130%] text-[#7D7D7D] flex items-center" style="font-family:'Geist Mono', monospace;">Appnigma.ai</span>
+              </div>
+              <!-- Right spacer -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;opacity:0;box-sizing:border-box;"></div>
+            </div>
+
+            <!-- Mac Window Content (height 359.69px) -->
+            <div class="sf-mockup-window-content relative bg-[#262626] overflow-hidden flex items-center justify-center">
+              <!-- Grid Lines Background -->
+              <div class="absolute inset-0 grid grid-cols-3 pointer-events-none">
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div></div>
+              </div>
+
+              <!-- Horizontal Dashed Divider Box -->
+              <div class="absolute w-full h-[134.93px] border-t border-b border-dashed border-[#3D3D3D] flex items-center justify-center bg-[#3D3D3D]" style="box-sizing:border-box; border-width: 0.775194px 0px; border-style: dashed; border-color: #3D3D3D;">
+                <!-- Active Card -->
+                <div class="w-full h-[133.38px] bg-[#262626] flex flex-col items-center justify-center gap-[18.6px] py-[37.2093px] px-[54.2636px]" style="box-sizing:border-box;">
+                  <div class="w-[24.81px] h-[24.81px] bg-white border border-[rgba(0,0,0,0.08)] rounded-[6.20155px] flex items-center justify-center shadow-sm" style="box-sizing:border-box;">
+                    <svg width="12.4" height="12.4" viewBox="0 0 24 24" fill="none" stroke="#4D4D4D" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <span class="font-body font-medium text-[12.4031px] text-white text-center tracking-[-0.02px]" style="font-family:'Montserrat', sans-serif;">Prompt Screenshot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mac Mockup Window 2: CRM Screenshot -->
+          <div class="sf-mockup-window relative w-[400px] max-w-full bg-[#262626] rounded-[9.30233px] overflow-hidden shadow-2xl flex flex-col flex-shrink-0 transition-opacity duration-300">
+            <!-- Mac Window Header -->
+            <div class="flex flex-row justify-between items-center bg-[#1a1a1a] flex-shrink-0" style="width:400px;height:27.91px;padding:9.30233px 0px;z-index:1;box-sizing:border-box;">
+              <!-- Traffic lights container -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;padding-left:9.30233px;box-sizing:border-box;">
+                <div class="rounded-full bg-[#FF6257]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#FDBC23]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#11CA3E]" style="width:6.2px;height:6.2px;"></div>
+              </div>
+              <!-- Domain Title Container -->
+              <div class="flex flex-row justify-center items-end gap-[3.1px] flex-grow" style="width:303.88px;height:12px;box-sizing:border-box;">
+                <svg width="9.3" height="9.3" viewBox="0 0 24 24" fill="none" stroke="#7D7D7D" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="font-mono font-normal text-[9.30233px] leading-[130%] text-[#7D7D7D] flex items-center" style="font-family:'Geist Mono', monospace;">Appnigma.ai</span>
+              </div>
+              <!-- Right spacer -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;opacity:0;box-sizing:border-box;"></div>
+            </div>
+
+            <!-- Mac Window Content (height 359.69px) -->
+            <div class="sf-mockup-window-content relative bg-[#262626] overflow-hidden flex items-center justify-center">
+              <!-- Grid Lines Background -->
+              <div class="absolute inset-0 grid grid-cols-3 pointer-events-none">
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div></div>
+              </div>
+
+              <!-- Horizontal Dashed Divider Box -->
+              <div class="absolute w-full h-[134.93px] border-t border-b border-dashed border-[#3D3D3D] flex items-center justify-center bg-[#3D3D3D]" style="box-sizing:border-box; border-width: 0.775194px 0px; border-style: dashed; border-color: #3D3D3D;">
+                <!-- Active Card -->
+                <div class="w-full h-[133.38px] bg-[#262626] flex flex-col items-center justify-center gap-[18.6px] py-[37.2093px] px-[54.2636px]" style="box-sizing:border-box;">
+                  <div class="w-[24.81px] h-[24.81px] bg-white border border-[rgba(0,0,0,0.08)] rounded-[6.20155px] flex items-center justify-center shadow-sm" style="box-sizing:border-box;">
+                    <svg width="12.4" height="12.4" viewBox="0 0 24 24" fill="none" stroke="#4D4D4D" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                  </div>
+                  <span class="font-body font-medium text-[12.4031px] text-white text-center tracking-[-0.02px]" style="font-family:'Montserrat', sans-serif;">CRM Screenshot</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mac Mockup Window 3: AppExchange Screenshot -->
+          <div class="sf-mockup-window relative w-[400px] max-w-full bg-[#262626] rounded-[9.30233px] overflow-hidden shadow-2xl flex flex-col flex-shrink-0 transition-opacity duration-300">
+            <!-- Mac Window Header -->
+            <div class="flex flex-row justify-between items-center bg-[#1a1a1a] flex-shrink-0" style="width:400px;height:27.91px;padding:9.30233px 0px;z-index:1;box-sizing:border-box;">
+              <!-- Traffic lights container -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;padding-left:9.30233px;box-sizing:border-box;">
+                <div class="rounded-full bg-[#FF6257]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#FDBC23]" style="width:6.2px;height:6.2px;"></div>
+                <div class="rounded-full bg-[#11CA3E]" style="width:6.2px;height:6.2px;"></div>
+              </div>
+              <!-- Domain Title Container -->
+              <div class="flex flex-row justify-center items-end gap-[3.1px] flex-grow" style="width:303.88px;height:12px;box-sizing:border-box;">
+                <svg width="9.3" height="9.3" viewBox="0 0 24 24" fill="none" stroke="#7D7D7D" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span class="font-mono font-normal text-[9.30233px] leading-[130%] text-[#7D7D7D] flex items-center" style="font-family:'Geist Mono', monospace;">Appnigma.ai</span>
+              </div>
+              <!-- Right spacer -->
+              <div class="flex flex-row align-items-center gap-[3.1px]" style="width:48.06px;min-width:48.06px;height:6.2px;margin:0 auto;opacity:0;box-sizing:border-box;"></div>
+            </div>
+
+            <!-- Mac Window Content (height 359.69px) -->
+            <div class="sf-mockup-window-content relative bg-[#262626] overflow-hidden flex items-center justify-center">
+              <!-- Grid Lines Background -->
+              <div class="absolute inset-0 grid grid-cols-3 pointer-events-none">
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div class="border-r border-dashed border-[#3d3d3d]"></div>
+                <div></div>
+              </div>
+
+              <!-- Horizontal Dashed Divider Box -->
+              <div class="absolute w-full h-[134.93px] border-t border-b border-dashed border-[#3D3D3D] flex items-center justify-center bg-[#3D3D3D]" style="box-sizing:border-box; border-width: 0.775194px 0px; border-style: dashed; border-color: #3D3D3D;">
+                <!-- Active Card -->
+                <div class="w-full h-[133.38px] bg-[#262626] flex flex-col items-center justify-center gap-[18.6px] py-[37.2093px] px-[54.2636px]" style="box-sizing:border-box;">
+                  <div class="w-[24.81px] h-[24.81px] bg-white border border-[rgba(0,0,0,0.08)] rounded-[6.20155px] flex items-center justify-center shadow-sm" style="box-sizing:border-box;">
+                    <svg width="12.4" height="12.4" viewBox="0 0 24 24" fill="none" stroke="#4D4D4D" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <span class="font-body font-medium text-[12.4031px] text-white text-center tracking-[-0.02px]" style="font-family:'Montserrat', sans-serif;">AppExchange Screenshot</span>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
   </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const featureButtons = document.querySelectorAll('.sf-feature-btn');
+      const track = document.querySelector('.sf-why-mock-track');
+      const mockupWindows = document.querySelectorAll('.sf-mockup-window');
+      const viewport = document.querySelector('.sf-why-right-viewport');
+
+      function updateActiveIndex(index) {
+        const isMobile = window.innerWidth <= 768;
+
+        // 1. Update active button background and border
+        featureButtons.forEach((b, idx) => {
+          const iconBox = b.querySelector('.sf-feature-icon-box');
+          const icon = b.querySelector('.sf-feature-icon');
+          const desc = b.querySelector('.sf-feature-desc');
+          const textWrap = b.querySelector('.sf-feature-text-wrap');
+
+          if (idx === index) {
+            b.style.height = isMobile ? 'auto' : '118px';
+            b.style.backgroundColor = '#262626';
+
+            if (icon) {
+              icon.classList.remove('text-[rgba(255,255,255,0.2)]');
+              icon.classList.add('text-white');
+            }
+
+            if (textWrap) {
+              textWrap.style.height = isMobile ? 'auto' : '70px';
+            }
+
+            if (desc) {
+              desc.style.maxHeight = isMobile ? '120px' : '42px';
+              desc.style.opacity = '1';
+            }
+          } else {
+            b.style.height = '80px';
+            b.style.backgroundColor = '#151515';
+
+            if (icon) {
+              icon.classList.remove('text-white');
+              icon.classList.add('text-[rgba(255,255,255,0.2)]');
+            }
+
+            if (textWrap) {
+              textWrap.style.height = isMobile ? 'auto' : '18px';
+            }
+
+            if (desc) {
+              desc.style.maxHeight = '0px';
+              desc.style.opacity = '0';
+            }
+          }
+        });
+
+        // 2. Scroll/Translate mockup track
+        const activeWindow = mockupWindows[index];
+        if (activeWindow && viewport && track) {
+          const viewportHeight = viewport.clientHeight;
+          const windowHeight = activeWindow.clientHeight;
+          const windowOffsetTop = activeWindow.offsetTop;
+          const translateVal = (viewportHeight - windowHeight) / 2 - windowOffsetTop;
+          track.style.transform = `translateY(${translateVal}px)`;
+        }
+
+        // 3. Update window opacities
+        mockupWindows.forEach((win, idx) => {
+          if (idx === index) {
+            win.classList.remove('opacity-40');
+            win.classList.add('opacity-100');
+          } else {
+            win.classList.remove('opacity-100');
+            win.classList.add('opacity-40');
+          }
+        });
+      }
+
+      // Add click listeners
+      featureButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => updateActiveIndex(index));
+      });
+
+      // Initial alignment
+      setTimeout(() => updateActiveIndex(0), 100);
+      
+      // Re-align on window resize to keep it perfectly centered
+      window.addEventListener('resize', () => {
+        const activeBtn = document.querySelector('.sf-feature-btn');
+        let activeIndex = 0;
+        featureButtons.forEach((b, idx) => {
+          if (b.style.backgroundColor === 'rgb(38, 38, 38)' || b.style.backgroundColor === '#262626') {
+            activeIndex = idx;
+          }
+        });
+        updateActiveIndex(activeIndex);
+      });
+    });
+  </script>
 
   <!-- Compare -->
-  <section class="bg-white border-b border-[#e5e5e5]" style="padding-left:120px;padding-right:120px;">
-    <div class="border-l border-r border-[#e5e5e5] py-20 flex flex-col gap-20">
-      <div class="px-6 flex flex-col gap-4">
-        <div class="border border-[#e5e5e5] bg-white px-3 py-2 inline-flex self-start">
-          <span class="font-body font-normal text-[12px] text-[#525252] leading-[1.5]">Compare</span>
-        </div>
-        <div class="flex flex-col gap-2">
-          <h2 class="font-heading font-medium text-[#0a0a0a] leading-[1.1]" style="font-size:32px;letter-spacing:-1.2px;">Compared to the alternatives.</h2>
-          <p class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Faster than consultants. Cleaner than middleware. Less painful than DIY.</p>
-        </div>
-      </div>
+  <Compare />
 
-      <!-- Cards -->
-      <div class="flex gap-6 overflow-x-auto px-6">
-        <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
-          <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
-          <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-6 8a6 6 0 1 1 12 0H2z"/></svg>
-            <span class="font-body font-normal text-[12px]">Yours</span>
-          </div>
-          <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
-            <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Your code. Your IP. No vendor lock-in, no rent forever.</p>
-            <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
-              <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-                <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
-              </div>
-              <div class="h-16 bg-[#fafafa]"></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
-          <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
-          <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 0L6 6H0l5 4-2 6 5-4 5 4-2-6 5-4h-6z"/></svg>
-            <span class="font-body font-normal text-[12px]">Fast</span>
-          </div>
-          <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
-            <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Ship in days, not quarters. While consultants scope, we deliver.</p>
-            <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
-              <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-                <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
-              </div>
-              <div class="h-16 bg-[#fafafa]"></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
-          <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
-          <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M10 2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-            <span class="font-body font-normal text-[12px]">Native</span>
-          </div>
-          <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
-            <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Built as a managed package. Lives inside Salesforce the way it should.</p>
-            <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
-              <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-                <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
-              </div>
-              <div class="h-16 bg-[#fafafa]"></div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
-          <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
-          <div class="absolute bg-[#151515] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0 3h1v5H7V7h1z"/></svg>
-            <span class="font-body font-normal text-[12px]">Honest</span>
-          </div>
-          <div class="absolute border border-[#151515] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
-            <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">One price, scoped to your budget. No retainers, no surprise invoices.</p>
-            <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
-              <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
-                <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-                <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-                <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
-              </div>
-              <div class="h-16 bg-[#fafafa]"></div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Comparison Table -->
-      <div class="border border-[#e5e5e5]">
-        <!-- Header row -->
-        <div class="flex border-b border-[#e5e5e5] bg-[#fafafa]">
-          <div class="flex items-center px-6 py-4 font-heading font-medium text-[16px] text-[#4d4d4d]" style="width:320px;flex-shrink:0;">Capability</div>
-          <div class="flex-1 flex items-center justify-center flex-col py-4 bg-[#0a0a0a] border-l border-[#0a0a0a]">
-            <span class="font-heading font-medium text-[16px] text-white">Appnigma AI</span>
-            <span class="font-body font-normal text-[12px] text-[rgba(255,255,255,0.7)]">Tailored to your budget</span>
-          </div>
-          <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
-            <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">Consultants</span>
-            <span class="font-body font-normal text-[12px] text-[#262626]">from $150K/yr</span>
-          </div>
-          <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
-            <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">Middleware</span>
-            <span class="font-body font-normal text-[12px] text-[#262626]">from $30K/yr</span>
-          </div>
-          <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
-            <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">DIY</span>
-            <span class="font-body font-normal text-[12px] text-[#262626]">from $95K/yr</span>
-          </div>
-        </div>
-        {[
-          { label: 'Native managed package', vals: ['✓','–','–','partial'] },
-          { label: 'Security Review ready',   vals: ['✓','partial','–','–'] },
-          { label: 'AppExchange listing',     vals: ['✓','✓','–','–'] },
-          { label: 'Days, not months',        vals: ['✓','–','✓','–'] },
-          { label: 'You own the IP',          vals: ['✓','–','✓','✓'] },
-          { label: 'No service contract',     vals: ['✓','–','✓','✓'] },
-        ].map(row => (
-          <div class="flex border-b border-[#e5e5e5] last:border-b-0">
-            <div class="flex items-center gap-2 px-6 py-3 font-body text-[14px] text-[#4d4d4d]" style="width:320px;flex-shrink:0;">{row.label}</div>
-            {row.vals.map((v, i) => (
-              <div class={`flex-1 flex items-center justify-center py-3 border-l border-[#e5e5e5] ${i === 0 ? 'bg-[#fafafa] border-l-[#0a0a0a]' : ''}`}>
-                {v === '✓' ? (
-                  <span class="w-5 h-5 rounded-full bg-[#0a0a0a] flex items-center justify-center">
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
-                ) : (
-                  <span class="font-body text-[14px] text-[#262626]">{v}</span>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Testimonial + Stats (shared with homepage) -->
+  <Testimonial />
+  <Stats />
 
-  <!-- Testimonial -->
-  <section class="bg-[#fafafa] border-y border-[#e5e5e5]" style="padding-left:120px;padding-right:120px;">
-    <div class="border-l border-r border-[#e5e5e5]">
-      <!-- Header bar -->
-      <div class="flex items-center justify-between px-10 py-8 border-b border-[#e5e5e5] bg-white">
-        <h2 class="font-heading font-medium text-[32px] text-[#0a0a0a]" style="letter-spacing:-0.04px;">Hear from our satisfied clients</h2>
-        <div class="flex items-center gap-4">
-          <button class="w-10 h-9 border border-[#f5f5f5] bg-white rounded-[8px] flex items-center justify-center shadow-sm">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.25"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button class="w-10 h-9 border border-[#f5f5f5] bg-white rounded-[8px] flex items-center justify-center shadow-sm">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.25"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-        </div>
-      </div>
-      <!-- Quote -->
-      <div class="flex items-center gap-10 p-10 bg-white border-b border-[#e5e5e5]">
-        <div class="flex flex-col gap-6" style="flex:1;">
-          <div class="flex items-center h-10">
-            <span class="font-body font-semibold text-[16px] text-[#0a0a0a]">Warmly,</span>
-          </div>
-          <p class="font-body font-normal text-[18px] text-[#0a0a0a] leading-[1.5]" style="letter-spacing:-0.02px;">
-            "We had zero Salesforce development experience, but still launched a fully functional managed package within a week. The platform made the process incredibly simple - no code, no waiting on engineers. Total game-changer."
-          </p>
-          <div class="flex items-center gap-3">
-            <div>
-              <p class="font-body font-normal text-[14px] text-[#0a0a0a]">Max Greenwald</p>
-              <p class="font-body font-normal text-[12px] text-[#737373]">CEO, Warmly</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex-shrink-0 bg-gray-200 rounded overflow-hidden" style="width:272px;height:272px;">
-          <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats -->
-  <section class="bg-white border-b border-[#e5e5e5]" style="padding-left:120px;padding-right:120px;">
-    <div class="border-l border-r border-[#e5e5e5] py-20 flex items-center justify-center">
-      <div class="w-full border border-[#e5e5e5] flex">
-        <div class="flex-1 flex flex-col gap-1 p-12 border-r border-[#e5e5e5]">
-          <span class="font-heading font-bold text-[32px] text-[#151515] leading-[1.1]" style="letter-spacing:-1.2px;">14 days</span>
-          <span class="font-body font-normal text-[14px] text-[#4d4d4d] leading-[1.5]">Median time to first listing</span>
-        </div>
-        <div class="flex-1 flex flex-col gap-1 p-12 border-r border-[#e5e5e5] bg-[#fafafa]">
-          <span class="font-heading font-bold text-[32px] text-[#151515] leading-[1.1]" style="letter-spacing:-1.2px;">98%</span>
-          <span class="font-body font-normal text-[14px] text-[#4d4d4d] leading-[1.5]">First-try Security Review pass</span>
-        </div>
-        <div class="flex-1 flex flex-col gap-1 p-12 border-r border-[#e5e5e5]">
-          <span class="font-heading font-bold text-[32px] text-[#151515] leading-[1.1]" style="letter-spacing:-1.2px;">120+</span>
-          <span class="font-body font-normal text-[14px] text-[#4d4d4d] leading-[1.5]">Native packages shipped</span>
-        </div>
-        <div class="flex-1 flex flex-col gap-1 p-12 bg-[#fafafa]">
-          <span class="font-heading font-bold text-[32px] text-[#151515] leading-[1.1]" style="letter-spacing:-1.2px;">$0</span>
-          <span class="font-body font-normal text-[14px] text-[#4d4d4d] leading-[1.5]">Average consulting spend</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="bg-[#151515] relative overflow-hidden" style="padding-left:120px;padding-right:120px;padding-bottom:128px;">
-    <div class="relative flex items-center" style="min-height:539px;">
-      <div class="flex flex-col gap-8 relative z-10" style="max-width:747px;">
-        <div class="flex flex-col gap-4" style="padding-top:138px;">
-          <h2 class="font-heading font-normal text-white leading-[1.1]" style="font-size:56px;letter-spacing:-1.2px;">Ship your CRM package<br />this quarter.</h2>
-          <p class="font-body font-normal text-[16px] text-[rgba(255,255,255,0.5)] leading-[1.5]">Book a 30-minute walkthrough. We'll generate your first package live.</p>
-        </div>
-        <div class="flex items-center gap-4">
-          <button class="btn-secondary font-body font-medium text-[14px] text-[#1d2b31] px-3 h-9 rounded-[8px] whitespace-nowrap bg-white" style="letter-spacing:-0.14px;">Book A Demo</button>
-          <button class="font-body font-medium text-[14px] text-white px-3 h-9 rounded-[8px] border border-white whitespace-nowrap" style="letter-spacing:-0.14px;">View Pricing</button>
-        </div>
-      </div>
-      <!-- Decorative sphere -->
-      <div class="absolute right-0 flex items-center justify-center" style="width:477px;height:482px;top:50%;transform:translateY(-50%);">
-        <div class="rounded-full bg-gradient-to-br from-blue-400 to-blue-700 opacity-80" style="width:370px;height:373px;filter:blur(1px);"></div>
-      </div>
-    </div>
-  </section>
+  <FinalCTA />
 
   <Footer />
 </Layout>
@@ -415,5 +371,89 @@ import Footer from '../components/Footer.astro';
     background: #fff;
     border: 1px solid #f5f5f5;
     box-shadow: 0px 1px 2px rgba(29,43,49,0.08);
+  }
+
+  .sf-hatch-pattern {
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 10px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .sf-mockup-window {
+    height: 387.6px;
+    box-sizing: border-box;
+  }
+  .sf-mockup-window-content {
+    height: 359.69px;
+    box-sizing: border-box;
+  }
+
+  /* ===== Mobile responsive (<=768px) ===== */
+  @media (max-width: 768px) {
+    /* Social proof logos: 5-across -> wrap 2 per row */
+    .sf-logos { flex-wrap: wrap; }
+    .sf-logos > div { flex: 0 0 50%; }
+
+    /* Dark "Why Salesforce": stack left copy over the mock panel */
+    .sf-why-section {
+      height: auto !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+    .sf-why-row { flex-direction: column !important; min-height: auto !important; height: auto !important; padding: 40px 0 !important; width: 100% !important; }
+    .sf-why-left { width: 100% !important; min-height: auto !important; height: auto !important; }
+    .sf-why-right {
+      width: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      height: auto !important;
+      border-top: none;
+      padding-top: 0 !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+    
+    .sf-mockup-window {
+      width: 280px !important;
+      height: 280px !important;
+      max-width: 100% !important;
+    }
+    
+    .sf-mockup-window-content {
+      height: calc(100% - 27.91px) !important;
+    }
+    
+    .sf-why-left > div:first-child {
+      width: 100% !important;
+      height: auto !important;
+    }
+    .sf-why-left h2,
+    .sf-why-left p,
+    .sf-feature-btn {
+      width: 100% !important;
+    }
+    .sf-why-left h2 {
+      height: auto !important;
+    }
+    .sf-why-left p {
+      height: auto !important;
+    }
+    
+    .sf-feature-btn .sf-feature-desc p {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+
+    /* Testimonial: stack quote over portrait */
+    .sf-quote { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+    .sf-quote-img { width: 100% !important; height: 220px !important; }
+
+    /* Stats: 4-across -> 2x2 */
+    .sf-stats { flex-wrap: wrap; }
+    .sf-stats > div { flex: 0 0 50%; }
+    .sf-stats > div:nth-child(2) { border-right: none; }
+    .sf-stats > div:nth-child(1), .sf-stats > div:nth-child(2) { border-bottom: 1px solid #e5e5e5; }
+
+
   }
 </style>

@@ -1,193 +1,150 @@
 ---
 ---
-<style>
-  .compare-table-wrap table th:first-child,
-  .compare-table-wrap table td:first-child { border-left: none; }
-  .compare-table-wrap table th:last-child,
-  .compare-table-wrap table td:last-child { border-right: none; }
-</style>
 <section class="bg-white border-b border-[#e5e5e5] px-section" style="padding-left:120px;padding-right:120px;">
-  <div class="border-l border-r border-[#ebebeb] py-20 flex flex-col gap-12">
-    <!-- Heading -->
+  <div class="border-l border-r border-[#e5e5e5] py-20 flex flex-col gap-20">
     <div class="px-6 flex flex-col gap-4">
-      <div class="border border-[#e5e5e5] bg-white px-3 py-1 inline-flex self-start">
+      <div class="border border-[#e5e5e5] bg-white px-3 py-2 inline-flex self-start">
         <span class="font-body font-normal text-[12px] text-[#525252] leading-[1.5]">Compare</span>
       </div>
-      <h2 class="font-heading font-medium text-[#151515] text-[40px] leading-[1.1]" style="letter-spacing:-1.2px;">Compared to the alternatives.</h2>
-      <p class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Faster than consultants. Cleaner than middleware. Less painful than DIY.</p>
+      <div class="flex flex-col gap-2">
+        <h2 class="font-heading font-medium text-[#0a0a0a] leading-[1.1]" style="font-size:32px;letter-spacing:-1.2px;">Compared to the alternatives.</h2>
+        <p class="font-body font-normal text-[16px] text-[#525252] leading-[1.5]">Faster than consultants. Cleaner than middleware. Less painful than DIY.</p>
+      </div>
     </div>
 
-    <!-- Cards row -->
-    <div class="flex gap-4 px-6 overflow-x-auto">
-      <!-- Appnigma AI card -->
-      <div class="bg-white border border-[#151515] rounded-none flex flex-col p-6 gap-4 flex-shrink-0" style="width:280px;">
-        <div class="bg-[#151515] text-white px-2 py-1 self-start flex items-center gap-2">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-6 8a6 6 0 1 1 12 0H2z"/></svg>
-          <span class="font-body font-medium text-[12px]">Yours</span>
+    <!-- Cards -->
+    <div class="flex gap-6 overflow-x-auto px-6">
+      <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
+        <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
+        <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-6 8a6 6 0 1 1 12 0H2z"/></svg>
+          <span class="font-body font-normal text-[12px]">Yours</span>
         </div>
-        <p class="font-body font-medium text-[16px] text-[#0a0a0a] leading-[1.4]">IP ownership. Your code, your terms, no rent forever.</p>
-        <div class="bg-[#fafafa] border border-[#e5e5e5] rounded-[6px] overflow-hidden mt-2">
-          <div class="flex items-center gap-1 p-2 border-b border-[#e5e5e5] bg-white">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-            <span class="font-mono text-[8px] text-[#7d7d7d] ml-2">Appnigma.ai</span>
+        <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
+          <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Your code. Your IP. No vendor lock-in, no rent forever.</p>
+          <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
+            <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
+              <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
+              <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
+            </div>
+            <div class="h-16 bg-[#fafafa]"></div>
           </div>
-          <div class="h-20"></div>
         </div>
       </div>
-      <!-- Fast card -->
-      <div class="bg-white border border-[#e5e5e5] rounded-none flex flex-col p-6 gap-4 flex-shrink-0" style="width:280px;">
-        <div class="bg-[#151515] text-white px-2 py-1 self-start flex items-center gap-2">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L6 6H0l5 4-2 6 5-4 5 4-2-6 5-4h-6z"/></svg>
-          <span class="font-body font-medium text-[12px]">Fast</span>
+      <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
+        <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
+        <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 0L6 6H0l5 4-2 6 5-4 5 4-2-6 5-4h-6z"/></svg>
+          <span class="font-body font-normal text-[12px]">Fast</span>
         </div>
-        <p class="font-body font-medium text-[16px] text-[#0a0a0a] leading-[1.4]">Days, not quarters. While consultants scope, we deliver.</p>
-        <div class="bg-[#fafafa] border border-[#e5e5e5] rounded-[6px] overflow-hidden mt-2">
-          <div class="flex items-center gap-1 p-2 border-b border-[#e5e5e5] bg-white">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-            <span class="font-mono text-[8px] text-[#7d7d7d] ml-2">Appnigma.ai</span>
+        <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
+          <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Ship in days, not quarters. While consultants scope, we deliver.</p>
+          <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
+            <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
+              <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
+              <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
+            </div>
+            <div class="h-16 bg-[#fafafa]"></div>
           </div>
-          <div class="h-20"></div>
         </div>
       </div>
-      <!-- Native card -->
-      <div class="bg-white border border-[#e5e5e5] rounded-none flex flex-col p-6 gap-4 flex-shrink-0" style="width:280px;">
-        <div class="bg-[#151515] text-white px-2 py-1 self-start flex items-center gap-2">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M10 2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
-          <span class="font-body font-medium text-[12px]">Native</span>
+      <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
+        <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
+        <div class="absolute bg-[#0a0a0a] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M10 2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+          <span class="font-body font-normal text-[12px]">Native</span>
         </div>
-        <p class="font-body font-medium text-[16px] text-[#0a0a0a] leading-[1.4]">Real managed package. Lives inside Salesforce the way it should.</p>
-        <div class="bg-[#fafafa] border border-[#e5e5e5] rounded-[6px] overflow-hidden mt-2">
-          <div class="flex items-center gap-1 p-2 border-b border-[#e5e5e5] bg-white">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-            <span class="font-mono text-[8px] text-[#7d7d7d] ml-2">Appnigma.ai</span>
+        <div class="absolute border border-[#0a0a0a] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
+          <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">Built as a managed package. Lives inside Salesforce the way it should.</p>
+          <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
+            <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
+              <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
+              <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
+            </div>
+            <div class="h-16 bg-[#fafafa]"></div>
           </div>
-          <div class="h-20"></div>
         </div>
       </div>
-      <!-- Honest card -->
-      <div class="bg-white border border-[#e5e5e5] rounded-none flex flex-col p-6 gap-4 flex-shrink-0" style="width:280px;">
-        <div class="bg-[#151515] text-white px-2 py-1 self-start flex items-center gap-2">
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0 3h1v5H7V7h1z"/></svg>
-          <span class="font-body font-medium text-[12px]">Honest</span>
+      <div class="flex-shrink-0 relative" style="width:298px;height:359px;">
+        <div class="absolute inset-0 bg-white border border-[#e5e5e5]"></div>
+        <div class="absolute bg-[#151515] text-white px-3 py-2 flex items-center gap-2" style="top:16px;left:16px;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0 3h1v5H7V7h1z"/></svg>
+          <span class="font-body font-normal text-[12px]">Honest</span>
         </div>
-        <p class="font-body font-medium text-[16px] text-[#0a0a0a] leading-[1.4]">Fixed price, scoped to your build. No retainers, no surprise invoices.</p>
-        <div class="bg-[#fafafa] border border-[#e5e5e5] rounded-[6px] overflow-hidden mt-2">
-          <div class="flex items-center gap-1 p-2 border-b border-[#e5e5e5] bg-white">
-            <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
-            <span class="font-mono text-[8px] text-[#7d7d7d] ml-2">Appnigma.ai</span>
+        <div class="absolute border border-[#151515] flex flex-col p-4 gap-10" style="top:16px;left:16px;right:16px;bottom:16px;padding-top:64px;">
+          <p class="font-heading font-medium text-[18px] text-[#0a0a0a] leading-[1.2]" style="letter-spacing:-1.2px;">One price, scoped to your budget. No retainers, no surprise invoices.</p>
+          <div class="bg-white rounded-[9px] border border-[#e5e5e5] overflow-hidden shadow-sm">
+            <div class="flex items-center gap-1.5 px-2 py-1.5 border-b border-[#e5e5e5]">
+              <div class="w-1.5 h-1.5 rounded-full bg-[#ee6d5e]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#f3bf4a]"></div>
+              <div class="w-1.5 h-1.5 rounded-full bg-[#5dc753]"></div>
+              <span class="font-mono text-[8px] text-[#7d7d7d] ml-auto">Appnigma.ai</span>
+            </div>
+            <div class="h-16 bg-[#fafafa]"></div>
           </div>
-          <div class="h-20"></div>
         </div>
       </div>
     </div>
 
     <!-- Comparison Table -->
-    <div class="px-0 compare-table-wrap">
-      <table class="w-full border-collapse" style="table-layout:fixed;">
-        <thead>
-          <tr>
-            <th class="text-left p-4 font-body font-normal text-[14px] text-[#525252] border border-[#e5e5e5] bg-white" style="width:25%;">Capability</th>
-            <th class="p-4 border border-[#e5e5e5] bg-[#151515]" style="width:18.75%;">
-              <div class="text-white font-heading font-medium text-[16px]">Appnigma AI</div>
-              <div class="text-[rgba(255,255,255,0.5)] font-body text-[12px] mt-0.5">Tailored to your budget</div>
-            </th>
-            <th class="p-4 border border-[#e5e5e5] bg-white" style="width:18.75%;">
-              <div class="font-body font-medium text-[16px] text-[#0a0a0a]">Consultants</div>
-              <div class="text-[#737373] font-body text-[12px] mt-0.5">from $150K/yr</div>
-            </th>
-            <th class="p-4 border border-[#e5e5e5] bg-white" style="width:18.75%;">
-              <div class="font-body font-medium text-[16px] text-[#0a0a0a]">Middleware</div>
-              <div class="text-[#737373] font-body text-[12px] mt-0.5">from $30K/yr</div>
-            </th>
-            <th class="p-4 border border-[#e5e5e5] bg-white" style="width:18.75%;">
-              <div class="font-body font-medium text-[16px] text-[#0a0a0a]">DIY</div>
-              <div class="text-[#737373] font-body text-[12px] mt-0.5">from $95K/yr</div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="4" y="2" width="8" height="12" rx="1"/></svg>
-                Native managed package
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">partial</td>
-          </tr>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><circle cx="8" cy="8" r="6"/></svg>
-                Security Review ready
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">partial</td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-          </tr>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><circle cx="8" cy="8" r="5"/><circle cx="8" cy="8" r="2"/></svg>
-                AppExchange listing
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-          </tr>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,12 3.5,15 5,9.5 1,6 6,6"/></svg>
-                Days, not months
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-          </tr>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="3" y="3" width="10" height="10" rx="1"/></svg>
-                You own the IP
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-          </tr>
-          <tr>
-            <td class="p-4 border border-[#e5e5e5]">
-              <div class="flex items-center gap-2 font-body text-[14px] text-[#0a0a0a]">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#737373" stroke-width="1"><rect x="2" y="6" width="12" height="8" rx="1"/><path d="M5 6V4a3 3 0 0 1 6 0v2"/></svg>
-                No service contract
-              </div>
-            </td>
-            <td class="p-4 border border-[#e5e5e5] text-center bg-[#f9f9f9]"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center font-body text-[14px] text-[#525252]">-</td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-            <td class="p-4 border border-[#e5e5e5] text-center"><span class="check-circle mx-auto"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="sf-table border border-[#e5e5e5]">
+      <!-- Header row -->
+      <div class="flex border-b border-[#e5e5e5] bg-[#fafafa]">
+        <div class="flex items-center px-6 py-4 font-heading font-medium text-[16px] text-[#4d4d4d]" style="width:320px;flex-shrink:0;">Capability</div>
+        <div class="flex-1 flex items-center justify-center flex-col py-4 bg-[#0a0a0a] border-l border-[#0a0a0a]">
+          <span class="font-heading font-medium text-[16px] text-white">Appnigma AI</span>
+          <span class="font-body font-normal text-[12px] text-[rgba(255,255,255,0.7)]">Tailored to your budget</span>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
+          <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">Consultants</span>
+          <span class="font-body font-normal text-[12px] text-[#262626]">from $150K/yr</span>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
+          <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">Middleware</span>
+          <span class="font-body font-normal text-[12px] text-[#262626]">from $30K/yr</span>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center py-4 border-l border-[#e5e5e5]">
+          <span class="font-heading font-medium text-[16px] text-[#4d4d4d]">DIY</span>
+          <span class="font-body font-normal text-[12px] text-[#262626]">from $95K/yr</span>
+        </div>
+      </div>
+      {[
+        { label: 'Native managed package', vals: ['✓','–','–','partial'] },
+        { label: 'Security Review ready',   vals: ['✓','partial','–','–'] },
+        { label: 'AppExchange listing',     vals: ['✓','✓','–','–'] },
+        { label: 'Days, not months',        vals: ['✓','–','✓','–'] },
+        { label: 'You own the IP',          vals: ['✓','–','✓','✓'] },
+        { label: 'No service contract',     vals: ['✓','–','✓','✓'] },
+      ].map(row => (
+        <div class="flex border-b border-[#e5e5e5] last:border-b-0">
+          <div class="flex items-center gap-2 px-6 py-3 font-body text-[14px] text-[#4d4d4d]" style="width:320px;flex-shrink:0;">{row.label}</div>
+          {row.vals.map((v, i) => (
+            <div class={`flex-1 flex items-center justify-center py-3 border-l border-[#e5e5e5] ${i === 0 ? 'bg-[#fafafa] border-l-[#0a0a0a]' : ''}`}>
+              {v === '✓' ? (
+                <span class="w-5 h-5 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              ) : (
+                <span class="font-body text-[14px] text-[#262626]">{v}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 768px) {
+    /* Comparison table: allow horizontal scroll */
+    .sf-table { overflow-x: auto; }
+    .sf-table > div { min-width: 960px; }
+  }
+</style>
